@@ -41,7 +41,7 @@ function LinkSection({ isMobile }: WithIsMobile) {
           />
         </Link>
 
-        <Link href="https://t.me/eyelash_aesthetics" target="_blank">
+        <Link href="https://t.me/eyelash_aesthetic" target="_blank">
           <TelegramIcon
             sx={{
               fontSize: 60,
