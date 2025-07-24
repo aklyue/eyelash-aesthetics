@@ -6,6 +6,7 @@ export const useHeader = (headerRef: RefObject<HTMLDivElement | null>) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +41,8 @@ export const useHeader = (headerRef: RefObject<HTMLDivElement | null>) => {
       if (
         menuOpen &&
         menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current?.contains(event.target as Node)
       ) {
         setMenuOpen(false);
       }
@@ -59,5 +61,6 @@ export const useHeader = (headerRef: RefObject<HTMLDivElement | null>) => {
     handleSectionClick,
     isFixed,
     menuRef,
+    buttonRef,
   };
 };

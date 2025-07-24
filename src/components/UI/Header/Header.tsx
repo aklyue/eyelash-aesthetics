@@ -23,8 +23,14 @@ type HeaderProps = {
   headerRef: RefObject<HTMLDivElement | null>;
 };
 export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
-  const { menuOpen, setMenuOpen, handleSectionClick, isFixed, menuRef } =
-    useHeader(headerRef);
+  const {
+    menuOpen,
+    setMenuOpen,
+    handleSectionClick,
+    isFixed,
+    menuRef,
+    buttonRef,
+  } = useHeader(headerRef);
   const theme = useTheme();
 
   return (
@@ -161,6 +167,7 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
               </Box>
 
               <IconButton
+                ref={buttonRef}
                 edge="end"
                 onClick={() => setMenuOpen(!menuOpen)}
                 sx={{ color: theme.palette.text.primary, mt: 0.5 }}
