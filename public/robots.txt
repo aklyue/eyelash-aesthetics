@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-Sitemap: https://eyelash-aesthetics.ru/sitemap.xml
+Sitemap: https://www.eyelash-aesthetics.ru/sitemap.xml
