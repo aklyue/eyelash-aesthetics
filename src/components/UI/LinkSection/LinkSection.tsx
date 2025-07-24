@@ -19,7 +19,7 @@ function LinkSection({ isMobile }: WithIsMobile) {
         Связь со мной
       </Typography>
       <Typography variant="subtitle1" color="#919191" mb={6}>
-        Оставьте заявку или свяжитесь напрямую — мы ответим в ближайшее время
+        Оставьте заявку или свяжитесь напрямую — я отвечу в ближайшее время
       </Typography>
       <Stack
         direction="row"
@@ -29,18 +29,8 @@ function LinkSection({ isMobile }: WithIsMobile) {
         borderBottom={"1px solid lightgray"}
         py={2}
       >
-        <Link href="tel:+77000000000" target="_blank">
-          <PhoneIcon
-            color="primary"
-            sx={{
-              fontSize: 60,
-              transition: "0.3s",
-              "&:hover": { opacity: 0.7 },
-            }}
-          />
-        </Link>
 
-        <Link href="https://wa.me/77000000000" target="_blank">
+        <Link href="https://wa.me/79537932267" target="_blank">
           <WhatsAppIcon
             sx={{
               fontSize: 60,
@@ -51,7 +41,7 @@ function LinkSection({ isMobile }: WithIsMobile) {
           />
         </Link>
 
-        <Link href="https://t.me/your_bot_or_username" target="_blank">
+        <Link href="https://t.me/eyelash_aesthetics" target="_blank">
           <TelegramIcon
             sx={{
               fontSize: 60,

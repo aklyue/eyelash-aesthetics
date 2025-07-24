@@ -195,7 +195,7 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                 Современный уход
               </Typography>
               <Typography variant="subtitle1" sx={{ my: 1, fontSize: 20 }}>
-                Аккуратное наращивание и коррекция ресниц
+                Аккуратное наращивание и ламинирование ресниц
               </Typography>
               <Button
                 onClick={() => {
