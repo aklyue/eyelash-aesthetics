@@ -170,7 +170,7 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                 ref={buttonRef}
                 edge="end"
                 onClick={() => setMenuOpen(!menuOpen)}
-                sx={{ color: theme.palette.text.primary, mt: 0.5 }}
+                sx={{ color: theme.palette.text.primary, mr: 0 }}
               >
                 <MenuIcon />
               </IconButton>

@@ -1,5 +1,4 @@
 import { Link, Paper, Stack, Typography } from "@mui/material";
-import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TelegramIcon from "../TelegramIcon";
 import { WithIsMobile } from "../../../types";
