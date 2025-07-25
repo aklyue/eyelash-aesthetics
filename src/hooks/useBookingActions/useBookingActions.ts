@@ -1,7 +1,10 @@
 import { format } from "date-fns";
 import { useAppDispatch } from "../../store/hooks";
-import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
-import { useState } from "react";
+import {
+  deleteOutdatedBookings,
+  loadBookedDates,
+} from "../../store/slices/bookedDatesSlice";
+import { useEffect, useState } from "react";
 
 export type FormData = {
   name: string;
@@ -116,6 +119,16 @@ export const useBookingActions = () => {
       })
       .map((hour) => `${hour.toString().padStart(2, "0")}:00`);
   }
+
+  useEffect(() => {
+    const lastCheck = localStorage.getItem("lastCleanupDate");
+    const todayStr = format(new Date(), "yyyy-MM-dd");
+
+    if (lastCheck !== todayStr) {
+      dispatch(deleteOutdatedBookings());
+      localStorage.setItem("lastCleanupDate", todayStr);
+    }
+  }, []);
 
   return {
     handleBooking,
