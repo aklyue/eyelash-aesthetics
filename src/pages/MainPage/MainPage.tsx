@@ -6,7 +6,7 @@ import AnimatedSection from "../../components/UI/AnimatedSection";
 import Header from "../../components/UI/Header";
 import AnimatedUI from "../../components/UI/AnimatedUI";
 import SectionNavigator from "../../components/UI/SectionNavigator";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Welcome from "../../components/Welcome";
 import Faq from "../../components/Faq";
 
@@ -19,16 +19,39 @@ function MainPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const handleLoad = () => {
+    const images = Array.from(document.images);
+    const total = images.length;
+    let loaded = 0;
+
+    if (total === 0) {
       setLoading(false);
+      return;
+    }
+
+    const handleImageLoad = () => {
+      loaded++;
+      if (loaded === total) {
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
+      }
     };
 
-    if (document.readyState === "complete") {
-      setLoading(false);
-    } else {
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
+    images.forEach((img) => {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener("load", handleImageLoad);
+        img.addEventListener("error", handleImageLoad);
+      }
+    });
+
+    return () => {
+      images.forEach((img) => {
+        img.removeEventListener("load", handleImageLoad);
+        img.removeEventListener("error", handleImageLoad);
+      });
+    };
   }, []);
 
   if (loading) {
@@ -43,7 +66,8 @@ function MainPage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: theme.palette.background.default || "#fff",
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
           zIndex: 9999,
         }}
       >
