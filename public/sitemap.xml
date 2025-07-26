@@ -6,4 +6,28 @@
     <loc>https://eyelash-aesthetics.ru/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://eyelash-aesthetics.ru/#intro</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://eyelash-aesthetics.ru/#aboutme</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://eyelash-aesthetics.ru/#services</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://eyelash-aesthetics.ru/#works</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://eyelash-aesthetics.ru/#contacts</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://eyelash-aesthetics.ru/#faq</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
