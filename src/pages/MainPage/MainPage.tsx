@@ -17,7 +17,7 @@ function MainPage() {
   const isTablet = useMediaQuery(theme.breakpoints.between("md", "lg"));
   const headerRef = useRef<HTMLDivElement>(null);
 
-  const { loading } = useLoader();
+  const loading = useLoader();
 
   if (loading) {
     return (
@@ -31,12 +31,11 @@ function MainPage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: theme.palette.text.primary,
           backgroundColor: theme.palette.background.default,
           zIndex: 9999,
         }}
       >
-        <CircularProgress />
+        <CircularProgress sx={{ color: theme.palette.text.primary }} />
       </Box>
     );
   }
