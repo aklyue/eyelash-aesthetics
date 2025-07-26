@@ -9,6 +9,7 @@ import SectionNavigator from "../../components/UI/SectionNavigator";
 import { useEffect, useRef, useState } from "react";
 import Welcome from "../../components/Welcome";
 import Faq from "../../components/Faq";
+import useLoader from "../../hooks/useLoader";
 
 function MainPage() {
   const theme = useTheme();
@@ -16,43 +17,7 @@ function MainPage() {
   const isTablet = useMediaQuery(theme.breakpoints.between("md", "lg"));
   const headerRef = useRef<HTMLDivElement>(null);
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const images = Array.from(document.images);
-    const total = images.length;
-    let loaded = 0;
-
-    if (total === 0) {
-      setLoading(false);
-      return;
-    }
-
-    const handleImageLoad = () => {
-      loaded++;
-      if (loaded === total) {
-        setTimeout(() => {
-          setLoading(false);
-        }, 200);
-      }
-    };
-
-    images.forEach((img) => {
-      if (img.complete) {
-        handleImageLoad();
-      } else {
-        img.addEventListener("load", handleImageLoad);
-        img.addEventListener("error", handleImageLoad);
-      }
-    });
-
-    return () => {
-      images.forEach((img) => {
-        img.removeEventListener("load", handleImageLoad);
-        img.removeEventListener("error", handleImageLoad);
-      });
-    };
-  }, []);
+  const { loading } = useLoader();
 
   if (loading) {
     return (
