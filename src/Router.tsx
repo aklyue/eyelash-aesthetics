@@ -12,7 +12,7 @@ function Router() {
   return (
     <Box
       sx={{
-        maxWidth: 1440,
+        maxWidth: 2000,
         width: "100%",
         mx: "auto",
       }}
