@@ -226,7 +226,7 @@ export default function Contacts() {
                       shouldDisableDate={(date) => {
                         const selectedDay = format(date, "yyyy-MM-dd");
                         const today = startOfDay(new Date());
-                        const minAllowedDate = startOfDay(addDays(today, 7));
+                        const minAllowedDate = startOfDay(addDays(today, 4));
 
                         const isTooEarly = isBefore(date, minAllowedDate);
 
