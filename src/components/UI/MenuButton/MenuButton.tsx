@@ -29,10 +29,7 @@ function MenuButton({ open, toggle, ref }: MenuButtonProps) {
     >
       <Box component="svg" width="24" height="24" viewBox="0 0 24 24">
         <motion.line
-          x1="3"
-          x2="21"
-          y1="6"
-          y2="6"
+          initial={{ x1: 3, x2: 21, y1: 6, y2: 6 }}
           animate={
             open
               ? { x1: 6, x2: 18, y1: 6, y2: 18 }
@@ -41,10 +38,7 @@ function MenuButton({ open, toggle, ref }: MenuButtonProps) {
           {...lineProps}
         />
         <motion.line
-          x1="3"
-          x2="21"
-          y1="12"
-          y2="12"
+          initial={{ x1: 3, x2: 21, y1: 12, y2: 12 }}
           animate={
             open
               ? { x1: 6, x2: 6, y1: 12, y2: 12, strokeWidth: 0 }
@@ -53,10 +47,7 @@ function MenuButton({ open, toggle, ref }: MenuButtonProps) {
           {...lineProps}
         />
         <motion.line
-          x1="3"
-          x2="21"
-          y1="18"
-          y2="18"
+          initial={{ x1: 3, x2: 21, y1: 18, y2: 18 }}
           animate={
             open
               ? { x1: 6, x2: 18, y1: 18, y2: 6 }
