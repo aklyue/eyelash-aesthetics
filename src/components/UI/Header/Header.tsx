@@ -16,6 +16,7 @@ import { ReactComponent as Logo } from "../../../assets/logo/logo.svg";
 import { AnimatePresence, motion } from "framer-motion";
 import HeaderImage from "../../../assets/background/header2.jpg";
 import { RefObject } from "react";
+import MenuButton from "../MenuButton";
 
 type HeaderProps = {
   isMobile: boolean;
@@ -166,14 +167,11 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                 </Link>
               </Box>
 
-              <IconButton
+              <MenuButton
                 ref={buttonRef}
-                edge="end"
-                onClick={() => setMenuOpen(!menuOpen)}
-                sx={{ color: theme.palette.text.primary, mr: 0 }}
-              >
-                <MenuIcon />
-              </IconButton>
+                open={menuOpen}
+                toggle={() => setMenuOpen((prev) => !prev)}
+              />
             </Toolbar>
           </Box>
         </AppBar>

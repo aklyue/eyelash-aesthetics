@@ -11,6 +11,8 @@ import { faqs } from "../../constants/faqs";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 
+import { motion } from "framer-motion";
+
 export default function Faq() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -40,6 +42,11 @@ export default function Faq() {
       <Box sx={{ transition: "all 0.3s ease-in-out" }}>
         {faqs.map((faq, index) => (
           <Accordion
+            component={motion.div}
+            initial={{ opacity: 0, y: 10, x: -20 }}
+            whileInView={{ opacity: 1, y: 0, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
             key={index}
             expanded={expanded === index}
             onChange={handleChange(index)}

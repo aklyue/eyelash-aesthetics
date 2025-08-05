@@ -9,6 +9,7 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import AddIcon from "@mui/icons-material/Add";
 import { services } from "../../constants/services";
 import { useState } from "react";
@@ -46,6 +47,11 @@ export default function Services() {
       <Stack>
         {Object.entries(services).map(([key, list], index) => (
           <Accordion
+            component={motion.div}
+            initial={{ opacity: 0, y: 10, x: -20 }}
+            whileInView={{ opacity: 1, y: 0, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
             key={key}
             disableGutters
             onChange={handleChange(index)}
