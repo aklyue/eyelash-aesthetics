@@ -24,7 +24,7 @@ import ContactsBackground from "../../assets/background/contacts-background.png"
 
 interface FormData {
   name: string;
-  phone: string;
+  telegram: string;
   service: string;
   details: string;
   date: Date | null;
@@ -55,7 +55,7 @@ export default function Contacts() {
   } = useForm<FormData>({
     defaultValues: {
       name: "",
-      phone: "",
+      telegram: "",
       service: "",
       details: "",
       date: null,
@@ -159,9 +159,16 @@ export default function Contacts() {
                   label="Ваш контакт (telegram)"
                   variant="outlined"
                   required
-                  {...register("phone", { required: "Введите контакт" })}
-                  error={!!errors.phone}
-                  helperText={errors.phone?.message}
+                  {...register("telegram", {
+                    required: "Введите контакт",
+                    pattern: {
+                      value: /^@[A-Za-z\d_]{5,32}$/,
+                      message:
+                        "Введите корректный username Telegram (например, @username123)",
+                    },
+                  })}
+                  error={!!errors.telegram}
+                  helperText={errors.telegram?.message}
                 />
 
                 <Controller

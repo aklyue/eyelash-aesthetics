@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 export type FormData = {
   name: string;
-  phone: string;
+  telegram: string;
   service: string;
   details: string;
   date: Date | null;
@@ -44,7 +44,7 @@ export const useBookingActions = () => {
 
       const text = `📝 Новая заявка:
 👤 Имя: ${data.name}
-📞 Контакт: ${data.phone}
+📞 Контакт: ${data.telegram}
 💬 Услуга: ${data.service}
 🧾 Детали: ${data.details}
 📅 Дата: ${dateStr}
