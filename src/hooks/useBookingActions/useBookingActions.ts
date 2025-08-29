@@ -71,7 +71,7 @@ export const useBookingActions = () => {
       if (data.date) {
         const dateDb = format(data.date, "yyyy-MM-dd");
 
-        await fetch("https://eyelash-aesthetics-api.onrender.com/bookedDates", {
+        await fetch("https://eyelash-aesthetics-api-080x.onrender.com/bookedDates", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
