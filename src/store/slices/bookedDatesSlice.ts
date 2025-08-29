@@ -33,7 +33,7 @@ export const deleteOutdatedBookings = createAsyncThunk(
     for (const booking of bookedData) {
       if (booking.date < todayStr) {
         await fetch(
-          `https://eyelash-aesthetics-api.onrender.com/bookedDates/${booking.id}`,
+          `https://eyelash-aesthetics-api-080x.onrender.com/bookedDates/${booking.id}`,
           {
             method: "DELETE",
           }
