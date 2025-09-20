@@ -279,7 +279,8 @@ export default function Contacts() {
 
                       availableSlots = getAvailableTimeSlots(
                         takenSlots,
-                        selectedService
+                        selectedService,
+                        new Date(selectedDate)
                       );
                     }
 

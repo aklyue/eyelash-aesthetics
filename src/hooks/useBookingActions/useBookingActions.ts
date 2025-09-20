@@ -71,15 +71,18 @@ export const useBookingActions = () => {
       if (data.date) {
         const dateDb = format(data.date, "yyyy-MM-dd");
 
-        await fetch("https://eyelash-aesthetics-api-080x.onrender.com/bookedDates", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            date: dateDb,
-            time: data.time,
-            service: data.service,
-          }),
-        });
+        await fetch(
+          "https://eyelash-aesthetics-api-080x.onrender.com/bookedDates",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              date: dateDb,
+              time: data.time,
+              service: data.service,
+            }),
+          }
+        );
 
         await dispatch(loadBookedDates()).unwrap();
       }
@@ -94,30 +97,87 @@ export const useBookingActions = () => {
 
   function getAvailableTimeSlots(
     booked: { time: string; service: string | undefined }[],
-    selectedService: string
+    selectedService: string,
+    date: Date
   ): string[] {
     const duration = serviceDurations[selectedService] ?? 1;
-    const allHours = Array.from({ length: 8 }, (_, i) => i + 11);
-    const excludedHours = new Set<number>();
+    const weekday = date.getDay();
 
-    booked.forEach(({ time, service }) => {
-      if (!time || !service) return;
-      const startHour = parseInt(time.split(":")[0], 10);
-      const bookedDuration = serviceDurations[service] ?? 1;
+    const rules: Record<
+      number,
+      Record<number, { startHour: number; allowed: string[] | "all" }>
+    > = {
+      1: {
+        1: {
+          startHour: 19,
+          allowed: [
+            "Снятие ресниц",
+            "Ламинирование ресниц",
+            "Окрашивание ресниц",
+          ],
+        },
+        2: {
+          startHour: 20,
+          allowed: ["Снятие ресниц", "Окрашивание ресниц"],
+        },
+        3: { startHour: 18, allowed: "all" },
+        4: { startHour: 14, allowed: "all" },
+        5: { startHour: 14, allowed: "all" },
+        6: { startHour: 16, allowed: "all" },
+        0: { startHour: 14, allowed: "all" },
+      },
+      2: {
+        1: { startHour: 18, allowed: "all" },
+        2: {
+          startHour: 20,
+          allowed: ["Снятие ресниц", "Окрашивание ресниц"],
+        },
+        3: {
+          startHour: 20,
+          allowed: ["Снятие ресниц", "Окрашивание ресниц"],
+        },
+        4: { startHour: 14, allowed: "all" },
+        5: { startHour: 18, allowed: "all" },
+        6: { startHour: 14, allowed: "all" },
+        0: { startHour: 14, allowed: "all" },
+      },
+    };
+    const scheduleStartDate = new Date(2025, 8, 22);
 
-      for (let h = startHour; h < startHour + bookedDuration; h++) {
-        if (h >= 11 && h <= 18) excludedHours.add(h);
-      }
-    });
+    const scheduleWeekNumber =
+      (Math.floor(
+        (date.getTime() - scheduleStartDate.getTime()) /
+          (1000 * 60 * 60 * 24 * 7)
+      ) %
+        2) +
+      1;
 
-    return allHours
-      .filter((hour) => {
-        for (let offset = 0; offset < duration; offset++) {
-          if (excludedHours.has(hour + offset)) return false;
+    const weekRules = rules[scheduleWeekNumber] || rules[1];
+    const rule = weekRules[weekday];
+    if (!rule) return [];
+
+    if (rule.allowed !== "all" && !rule.allowed.includes(selectedService))
+      return [];
+
+    const excluded = new Set(
+      booked.map((b) => b.time).filter(Boolean) as string[]
+    );
+
+    const slots: string[] = [];
+    for (let h = rule.startHour; h <= 20; h++) {
+      let free = true;
+      for (let offset = 0; offset < duration; offset++) {
+        const checkHour = h + offset;
+        const checkSlot = `${checkHour.toString().padStart(2, "0")}:00`;
+        if (excluded.has(checkSlot) || checkHour > 20) {
+          free = false;
+          break;
         }
-        return true;
-      })
-      .map((hour) => `${hour.toString().padStart(2, "0")}:00`);
+      }
+      if (free) slots.push(`${h.toString().padStart(2, "0")}:00`);
+    }
+
+    return slots;
   }
 
   useEffect(() => {
