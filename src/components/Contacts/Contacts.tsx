@@ -12,7 +12,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import { DatePicker } from "@mui/x-date-pickers";
+import { DatePicker, StaticDatePicker } from "@mui/x-date-pickers";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import useBookingActions from "../../hooks/useBookingActions";
 import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
@@ -34,6 +34,7 @@ interface FormData {
 export default function Contacts() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useAppDispatch();
   const bookedDates = useAppSelector((state) => state.bookedDates);
   const {
@@ -222,14 +223,22 @@ export default function Contacts() {
                   name="date"
                   control={control}
                   render={({ field }) => (
-                    <DatePicker
+                    <StaticDatePicker
                       {...field}
+                      sx={{
+                        bgcolor: "rgba(0,0,0,0)",
+                        justifyContent: isMobile ? "flex-end" : "space-between",
+                        gap: isMobile ? 5 : undefined,
+                        display: "flex",
+                        flexDirection: isSmMobile ? "column" : "row-reverse",
+                      }}
                       key={bookedDates.length}
+                      localeText={{
+                        toolbarTitle: "Выберите день",
+                      }}
                       value={field.value ?? null}
                       onChange={(newValue) => field.onChange(newValue)}
-                      format="dd.MM.yyyy"
                       disablePast
-                      label="Дата бронирования"
                       shouldDisableDate={(date) => {
                         const selectedDay = format(date, "yyyy-MM-dd");
                         const today = startOfDay(new Date());
@@ -246,11 +255,33 @@ export default function Contacts() {
                         return isTooEarly || isFullyBooked;
                       }}
                       slotProps={{
-                        textField: {
-                          fullWidth: true,
-                          required: true,
-                          error: !!errors.date,
-                          helperText: errors.date?.message,
+                        actionBar: { actions: [] },
+                        calendarHeader: { disabled: true },
+                        toolbar: {
+                          sx: {
+                            maxWidth: "100%",
+                            alignItems: isMobile ? undefined : "flex-end",
+                            "& .MuiPickersToolbar-content": {
+                              alignItems: "flex-start",
+                            },
+                            "& .MuiDatePickerToolbar-title": {
+                              m: 0,
+                            },
+                          },
+                        },
+                        day: {
+                          sx: {
+                            "&.MuiPickersDay-root": {
+                              fontWeight: "bold",
+                            },
+                            "&.Mui-selected": {
+                              bgcolor: "#ce92d7ff !important",
+                              color: "white",
+                            },
+                            "&.MuiPickersDay-today": {
+                              border: "2px solid #c293bdff",
+                            },
+                          },
                         },
                       }}
                     />
