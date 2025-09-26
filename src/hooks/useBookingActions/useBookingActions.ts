@@ -1,10 +1,11 @@
-import { format } from "date-fns";
+import { differenceInCalendarWeeks, format, getISODay } from "date-fns";
 import { useAppDispatch } from "../../store/hooks";
 import {
   deleteOutdatedBookings,
   loadBookedDates,
 } from "../../store/slices/bookedDatesSlice";
 import { useEffect, useState } from "react";
+import { rules } from "../../constants/schedule";
 
 export type FormData = {
   name: string;
@@ -101,56 +102,12 @@ export const useBookingActions = () => {
     date: Date
   ): string[] {
     const duration = serviceDurations[selectedService] ?? 1;
-    const weekday = date.getDay();
+    const weekday = getISODay(date) - 1;
 
-    const rules: Record<
-      number,
-      Record<number, { startHour: number; allowed: string[] | "all" }>
-    > = {
-      1: {
-        1: {
-          startHour: 19,
-          allowed: [
-            "Снятие ресниц",
-            "Ламинирование ресниц",
-            "Окрашивание ресниц",
-          ],
-        },
-        2: {
-          startHour: 20,
-          allowed: ["Снятие ресниц", "Окрашивание ресниц"],
-        },
-        3: { startHour: 18, allowed: "all" },
-        4: { startHour: 14, allowed: "all" },
-        5: { startHour: 14, allowed: "all" },
-        6: { startHour: 16, allowed: "all" },
-        0: { startHour: 14, allowed: "all" },
-      },
-      2: {
-        1: { startHour: 18, allowed: "all" },
-        2: {
-          startHour: 20,
-          allowed: ["Снятие ресниц", "Окрашивание ресниц"],
-        },
-        3: {
-          startHour: 20,
-          allowed: ["Снятие ресниц", "Окрашивание ресниц"],
-        },
-        4: { startHour: 14, allowed: "all" },
-        5: { startHour: 18, allowed: "all" },
-        6: { startHour: 14, allowed: "all" },
-        0: { startHour: 14, allowed: "all" },
-      },
-    };
     const scheduleStartDate = new Date(2025, 8, 22);
 
-    const scheduleWeekNumber =
-      (Math.floor(
-        (date.getTime() - scheduleStartDate.getTime()) /
-          (1000 * 60 * 60 * 24 * 7)
-      ) %
-        2) +
-      1;
+    const weekDiff = differenceInCalendarWeeks(date, scheduleStartDate);
+    const scheduleWeekNumber = (((weekDiff % 2) + 2) % 2) + 1;
 
     const weekRules = rules[scheduleWeekNumber] || rules[1];
     const rule = weekRules[weekday];
@@ -164,7 +121,7 @@ export const useBookingActions = () => {
     );
 
     const slots: string[] = [];
-    for (let h = rule.startHour; h <= 20; h++) {
+    for (let h = rule.startHour; h <= 21 - duration; h++) {
       let free = true;
       for (let offset = 0; offset < duration; offset++) {
         const checkHour = h + offset;

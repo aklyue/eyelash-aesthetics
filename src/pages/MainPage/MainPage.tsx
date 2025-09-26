@@ -6,10 +6,11 @@ import AnimatedSection from "../../components/UI/AnimatedSection";
 import Header from "../../components/UI/Header";
 import AnimatedUI from "../../components/UI/AnimatedUI";
 import SectionNavigator from "../../components/UI/SectionNavigator";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Welcome from "../../components/Welcome";
 import Faq from "../../components/Faq";
 import useLoader from "../../hooks/useLoader";
+import Schedule from "../../components/Schedule";
 
 function MainPage() {
   const theme = useTheme();
@@ -56,9 +57,12 @@ function MainPage() {
         <Stats />
       </AnimatedSection>
       <AnimatedSection index={4}>
-        <Contacts />
+        <Schedule />
       </AnimatedSection>
       <AnimatedSection index={5}>
+        <Contacts />
+      </AnimatedSection>
+      <AnimatedSection index={6}>
         <Faq />
       </AnimatedSection>
     </Box>
