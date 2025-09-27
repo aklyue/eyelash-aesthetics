@@ -32,6 +32,7 @@ function Schedule() {
     currentWeekNumber,
     handleClick,
     handleClose,
+    handleClear,
     toggleService,
     open,
     anchorEl,
@@ -52,41 +53,51 @@ function Schedule() {
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Расписание
         </Typography>
-        <Button
-          onClick={handleClick}
-          sx={{
-            bgcolor: theme.palette.custom.sectionLight,
-            // border: "1px solid #de8fcdff",
-            color: "#ba68a9ff",
-            padding: "0 2px",
-            borderRadius: "12px",
-            textTransform: "none",
-            fontSize: "16px",
-            fontWeight: 500,
-            width: "fit-content",
-            // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-            transition: "all 0.3s ease",
-            // "&:hover": {
-            //   bgcolor: "#c877b4b3",
-            //   color: "white",
-            //   boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
-            // },
-            "&:active": {
-              transform: "scale(0.97)",
-            },
-          }}
-        >
-          <Typography mr={1}>Список услуг</Typography>
-          <FilterList />
-        </Button>
+        <Box display={"flex"} gap={3} mb={1}>
+          <Button
+            onClick={handleClick}
+            sx={{
+              bgcolor: theme.palette.custom.sectionLight,
+              // border: "1px solid #de8fcdff",
+              color: "#ba68a9ff",
+              padding: "0 2px",
+              borderRadius: "12px",
+              textTransform: "none",
+              fontSize: "16px",
+              fontWeight: 500,
+              width: "fit-content",
+              // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              transition: "all 0.3s ease",
+              // "&:hover": {
+              //   bgcolor: "#c877b4b3",
+              //   color: "white",
+              //   boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
+              // },
+              "&:active": {
+                transform: "scale(0.97)",
+              },
+            }}
+          >
+            <Typography mr={1}>Список услуг</Typography>
+            <FilterList />
+          </Button>
+        </Box>
       </Box>
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        <Box display="flex" gap={0.5} flexWrap="wrap" minHeight={35} mb={2}>
+        <Box
+          display="flex"
+          alignItems={"center"}
+          gap={0.5}
+          flexWrap="wrap"
+          minHeight={35}
+          mb={1}
+        >
           <AnimatePresence mode="popLayout">
             {selectedServices.map((s) => (
               <Box
@@ -161,6 +172,34 @@ function Schedule() {
           </Menu>
         </FormControl>
       </Box>
+      {selectedServices.length ? (
+        <Button
+          onClick={handleClear}
+          sx={{
+            bgcolor: theme.palette.custom.sectionLight,
+            // border: "1px solid #de8fcdff",
+            color: "#ba68a9ff",
+            padding: "0 2px",
+            borderRadius: "12px",
+            textTransform: "none",
+            fontSize: "16px",
+            fontWeight: 500,
+            width: "fit-content",
+            // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            transition: "all 0.3s ease",
+            // "&:hover": {
+            //   bgcolor: "#c877b4b3",
+            //   color: "white",
+            //   boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
+            // },
+            "&:active": {
+              transform: "scale(0.97)",
+            },
+          }}
+        >
+          <Typography mr={1}>Очистить</Typography>
+        </Button>
+      ) : null}
       {weeks.map((week) => (
         <motion.div layout transition={{ duration: 0.1 }}>
           <Accordion

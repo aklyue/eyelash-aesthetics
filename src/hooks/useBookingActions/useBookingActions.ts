@@ -106,15 +106,6 @@ export const useBookingActions = () => {
     const duration = serviceDurations[selectedService] ?? 1;
     const rule = getRuleForDate(date);
 
-    console.log(
-      "date",
-      format(date, "yyyy-MM-dd"),
-      "bookedSlots",
-      booked.map((b) => b.time),
-      "rule start",
-      rule.startHour
-    );
-
     if (!rule) return [];
     if (rule.allowed !== "all" && !rule.allowed.includes(selectedService))
       return [];

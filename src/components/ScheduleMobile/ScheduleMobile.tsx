@@ -32,6 +32,7 @@ function ScheduleMobile() {
     currentWeekNumber,
     handleClick,
     handleClose,
+    handleClear,
     toggleService,
     open,
     anchorEl,
@@ -58,33 +59,62 @@ function ScheduleMobile() {
       }}
       id="schedule"
     >
-      <Box
-        display={"flex"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-      >
-        <Typography variant="h4" fontWeight={700} gutterBottom>
-          Расписание
-        </Typography>
-        <Button
-          onClick={handleClick}
-          sx={{
-            bgcolor: theme.palette.custom.sectionLight,
-            // border: "1px solid #de8fcdff",
-            color: "#ba68a9ff",
-            padding: "0 2px",
-            borderRadius: "12px",
-            textTransform: "none",
-            fontSize: "16px",
-            fontWeight: 500,
-            // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-            // "&:hover": { bgcolor: "#c877b4b3", color: "white" },
-            "&:active": { transform: "scale(0.97)" },
-          }}
-        >
-          <Typography mr={1}>Услуги</Typography>
-          <FilterList />
-        </Button>
+      <Box display={"flex"} justifyContent={"space-between"}>
+        <Box>
+          <Typography variant="h4" fontWeight={700} gutterBottom>
+            Расписание
+          </Typography>
+          {selectedServices.length ? (
+            <Button
+              onClick={handleClear}
+              sx={{
+                bgcolor: theme.palette.custom.sectionLight,
+                // border: "1px solid #de8fcdff",
+                color: "#ba68a9ff",
+                padding: "0 2px",
+                borderRadius: "12px",
+                textTransform: "none",
+                fontSize: "16px",
+                fontWeight: 500,
+                width: "fit-content",
+                mb: 1,
+                // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                transition: "all 0.3s ease",
+                // "&:hover": {
+                //   bgcolor: "#c877b4b3",
+                //   color: "white",
+                //   boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
+                // },
+                "&:active": {
+                  transform: "scale(0.97)",
+                },
+              }}
+            >
+              <Typography mr={1}>Очистить</Typography>
+            </Button>
+          ) : null}
+        </Box>
+        <Box height={45} display={"flex"} alignItems={"center"}>
+          <Button
+            onClick={handleClick}
+            sx={{
+              bgcolor: theme.palette.custom.sectionLight,
+              // border: "1px solid #de8fcdff",
+              color: "#ba68a9ff",
+              padding: "0 2px",
+              borderRadius: "12px",
+              textTransform: "none",
+              fontSize: "16px",
+              fontWeight: 500,
+              // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              // "&:hover": { bgcolor: "#c877b4b3", color: "white" },
+              "&:active": { transform: "scale(0.97)" },
+            }}
+          >
+            <Typography mr={1}>Услуги</Typography>
+            <FilterList />
+          </Button>
+        </Box>
       </Box>
 
       <Box

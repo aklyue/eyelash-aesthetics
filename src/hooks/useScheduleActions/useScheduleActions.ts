@@ -26,12 +26,17 @@ export const useScheduleActions = () => {
     setAnchorEl(null);
   };
 
+  const handleClear = () => {
+    setSelectedServices([]);
+  };
+
   return {
     selectedServices,
     setSelectedServices,
     currentWeekNumber,
     handleClick,
     handleClose,
+    handleClear,
     toggleService,
     open,
     anchorEl,
