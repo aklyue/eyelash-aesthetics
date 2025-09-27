@@ -11,6 +11,7 @@ import Welcome from "../../components/Welcome";
 import Faq from "../../components/Faq";
 import useLoader from "../../hooks/useLoader";
 import Schedule from "../../components/Schedule";
+import ScheduleMobile from "../../components/ScheduleMobile";
 
 function MainPage() {
   const theme = useTheme();
@@ -57,7 +58,7 @@ function MainPage() {
         <Stats />
       </AnimatedSection>
       <AnimatedSection index={4}>
-        <Schedule />
+        {isMobile ? <ScheduleMobile /> : <Schedule />}
       </AnimatedSection>
       <AnimatedSection index={5}>
         <Contacts />
