@@ -5,6 +5,7 @@ import SlideFour from "../assets/images/SliderSlides/slide-four.jpg";
 import SlideFive from "../assets/images/SliderSlides/slide-five.jpg";
 import SlideSix from "../assets/images/SliderSlides/slide-six.jpg";
 import SlideSeven from "../assets/images/SliderSlides/slide-seven.jpg";
+import SlideEight from "../assets/images/SliderSlides/slide-eight.jpg";
 
 export const slides = [
   {
@@ -33,6 +34,10 @@ export const slides = [
   },
   {
     src: SlideSeven,
+    text: "Седьмой слайд — начните сотрудничество сегодня",
+  },
+  {
+    src: SlideEight,
     text: "Седьмой слайд — начните сотрудничество сегодня",
   },
 ];

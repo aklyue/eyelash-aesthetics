@@ -102,7 +102,7 @@ function Schedule() {
                   alignItems: "center",
                   color: "rgba(36, 36, 36, 1)",
                   border: "1px solid #848484",
-                  bgcolor: "#fd70ea1b",
+                  bgcolor: "rgba(254, 211, 230, 0.6)",
                   borderRadius: "4px",
                   px: 2,
                   maxHeight: 35,
@@ -241,11 +241,14 @@ function Schedule() {
                                   color: "rgba(36, 36, 36, 1)",
                                   border: "1px solid #848484",
                                   backgroundColor: selectedServices.includes(s)
-                                    ? "#fd70ea1b"
+                                    ? "rgba(254, 211, 230, 0.6)"
                                     : "rgba(0, 0, 0, 0)",
-                                  "&:hover": { bgcolor: "#cd009323" },
+                                  "&:hover": {
+                                    bgcolor: "rgba(234, 194, 212, 0.6)",
+                                  },
                                   fontSize: "0.8rem",
                                   padding: "4px 10px",
+                                  textTransform: "none",
                                 }}
                               >
                                 {s}

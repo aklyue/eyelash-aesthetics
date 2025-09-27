@@ -106,7 +106,7 @@ function ScheduleMobile() {
                 alignItems: "center",
                 color: "rgba(36, 36, 36, 1)",
                 border: "1px solid #848484",
-                bgcolor: "#fd70ea1b",
+                bgcolor: "rgba(254, 211, 230, 0.6)",
                 borderRadius: "4px",
                 px: 1,
                 maxHeight: 30,
@@ -260,9 +260,8 @@ function ScheduleMobile() {
                                   color: "rgba(36,36,36,1)",
                                   border: "1px solid #848484",
                                   backgroundColor: selectedServices.includes(s)
-                                    ? "#fd70ea1b"
+                                    ? "rgba(254, 211, 230, 0.6)"
                                     : "transparent",
-                                  "&:hover": { bgcolor: "#cd009323" },
                                   fontSize: "0.8rem",
                                   padding: "2px 10px",
                                   textTransform: "none",
