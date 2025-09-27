@@ -48,7 +48,7 @@ function Schedule() {
       }}
       id="schedule"
     >
-      <Box display={"flex"} gap={3}>
+      <Box display={"flex"} flexDirection={"column"}>
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Расписание
         </Typography>
@@ -56,21 +56,21 @@ function Schedule() {
           onClick={handleClick}
           sx={{
             bgcolor: theme.palette.custom.sectionLight,
-            border: "1px solid #de8fcdff",
+            // border: "1px solid #de8fcdff",
             color: "#ba68a9ff",
-            padding: "8px 10px",
+            padding: "0 2px",
             borderRadius: "12px",
             textTransform: "none",
             fontSize: "16px",
             fontWeight: 500,
-            mb: 2,
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            width: "fit-content",
+            // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
             transition: "all 0.3s ease",
-            "&:hover": {
-              bgcolor: "#c877b4b3",
-              color: "white",
-              boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
-            },
+            // "&:hover": {
+            //   bgcolor: "#c877b4b3",
+            //   color: "white",
+            //   boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
+            // },
             "&:active": {
               transform: "scale(0.97)",
             },
@@ -181,7 +181,7 @@ function Schedule() {
                 </Typography>
               </AccordionSummary>
             </motion.div>
-            <AccordionDetails sx={{ p: 0 }}>
+            <AccordionDetails sx={{ p: 0, mb: 2 }}>
               <Grid container spacing={2}>
                 <AnimatePresence mode="sync">
                   {Object.entries(rules[week])

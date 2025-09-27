@@ -6,40 +6,45 @@ import {
   useTheme,
 } from "@mui/material";
 import { StaticDatePicker } from "@mui/x-date-pickers";
-import { addDays, isBefore, startOfDay } from "date-fns";
+import {
+  addDays,
+  isBefore,
+  startOfDay,
+} from "date-fns";
 import { format } from "date-fns";
-import { Controller, useForm } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormWatch,
+} from "react-hook-form";
 import { useAppSelector } from "../../../store/hooks";
 import { FormData } from "../../Contacts/Contacts";
 import useBookingActions from "../../../hooks/useBookingActions";
+import { getRuleForDate } from "../../../utils/getRuleForDate";
+
+interface ReservationBlockProps {
+  name: keyof FormData;
+  service: string;
+  control: Control<FormData>;
+  watch: UseFormWatch<FormData>;
+  errors: FieldErrors<FormData>;
+}
 
 function ReservationBlock({
   name,
   service,
-}: {
-  name: keyof FormData;
-  service: string;
-}) {
+  control,
+  watch,
+  errors
+}: ReservationBlockProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isSmMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { getAvailableTimeSlots } = useBookingActions();
   const bookedDates = useAppSelector((state) => state.bookedDates);
   const selectedService = service;
-  const {
-    control,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm<FormData>({
-    defaultValues: {
-      name: "",
-      telegram: "",
-      service: "",
-      details: "",
-      date: null,
-      time: null,
-    },
-  });
+
   return (
     <Box>
       <Controller
@@ -74,16 +79,29 @@ function ReservationBlock({
               const isBlocked = blockedDates.some(
                 (blocked) => startOfDay(date).getTime() === blocked.getTime()
               );
-
               const isTooEarly = isBefore(date, minAllowedDate);
 
-              const timesForDate = bookedDates
+              const bookedSlots = bookedDates
                 .filter((entry) => entry.date === selectedDay)
-                .map((entry) => entry.time);
+                .map((entry) => ({ time: entry.time, service: entry.service }));
 
-              const isFullyBooked = timesForDate.length >= 3;
+              const availableSlots = getAvailableTimeSlots(
+                bookedSlots,
+                selectedService,
+                date
+              );
 
-              return isTooEarly || isFullyBooked || isBlocked;
+              const isNoSlotAvailable = availableSlots.length === 0;
+
+              const rule = getRuleForDate(date);
+              const isNotAllowed =
+                !rule ||
+                (rule.allowed !== "all" &&
+                  !rule.allowed.includes(selectedService));
+
+              return (
+                isTooEarly || isNoSlotAvailable || isBlocked || isNotAllowed
+              );
             }}
             slotProps={{
               actionBar: { actions: [] },

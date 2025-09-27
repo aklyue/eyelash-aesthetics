@@ -19,6 +19,7 @@ const sectionTitles: Record<keyof typeof services, string> = {
   removal: "Снятие ресниц",
   extra: "Дополнительные эффекты",
   lamination: "Ламинирование и окрашивание",
+  correction: "Коррекция ресниц",
 };
 
 export default function Services() {

@@ -17,4 +17,7 @@ export const services = {
     { label: "Ламинирование с окрашиванием", price: "800₽" },
     { label: "Окрашивание ресниц", price: "200₽" },
   ],
+  correction: [
+    {label: "Коррекция ресниц", price: "300₽ - 400₽"}
+  ]
 };

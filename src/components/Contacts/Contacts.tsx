@@ -34,13 +34,8 @@ export default function Contacts() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useAppDispatch();
-  const {
-    handleBooking,
-    status,
-    setStatus,
-    setPaymentFile,
-    paymentFile,
-  } = useBookingActions();
+  const { handleBooking, status, setStatus, setPaymentFile, paymentFile } =
+    useBookingActions();
 
   const {
     register,
@@ -192,6 +187,9 @@ export default function Contacts() {
                         Окрашивание ресниц
                       </MenuItem>
                       <MenuItem value="Снятие ресниц">Снятие ресниц</MenuItem>
+                      <MenuItem value="Коррекция ресниц">
+                        Коррекция ресниц
+                      </MenuItem>
                     </TextField>
                   )}
                 />
@@ -215,7 +213,13 @@ export default function Contacts() {
                   )}
                 />
 
-                <ReservationBlock name={"date"} service={watch("service")} />
+                <ReservationBlock
+                  name={"date"}
+                  service={watch("service")}
+                  control={control}
+                  watch={watch}
+                  errors={errors}
+                />
 
                 <Button
                   type="submit"

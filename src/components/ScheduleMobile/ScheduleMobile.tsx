@@ -58,7 +58,11 @@ function ScheduleMobile() {
       }}
       id="schedule"
     >
-      <Box display={"flex"} justifyContent={"space-between"}>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
         <Typography variant="h4" fontWeight={700} gutterBottom>
           Расписание
         </Typography>
@@ -66,16 +70,15 @@ function ScheduleMobile() {
           onClick={handleClick}
           sx={{
             bgcolor: theme.palette.custom.sectionLight,
-            border: "1px solid #de8fcdff",
+            // border: "1px solid #de8fcdff",
             color: "#ba68a9ff",
-            padding: "8px 10px",
+            padding: "0 2px",
             borderRadius: "12px",
             textTransform: "none",
             fontSize: "16px",
             fontWeight: 500,
-            mb: 2,
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-            "&:hover": { bgcolor: "#c877b4b3", color: "white" },
+            // boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            // "&:hover": { bgcolor: "#c877b4b3", color: "white" },
             "&:active": { transform: "scale(0.97)" },
           }}
         >

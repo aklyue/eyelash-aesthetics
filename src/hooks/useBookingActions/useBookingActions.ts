@@ -6,6 +6,7 @@ import {
 } from "../../store/slices/bookedDatesSlice";
 import { useEffect, useState } from "react";
 import { rules } from "../../constants/schedule";
+import { getRuleForDate } from "../../utils/getRuleForDate";
 
 export type FormData = {
   name: string;
@@ -21,6 +22,7 @@ const serviceDurations: Record<string, number> = {
   "Снятие ресниц": 1,
   "Ламинирование ресниц": 2,
   "Окрашивание ресниц": 1,
+  "Коррекция ресниц": 2,
 };
 
 const TELEGRAM_BOT_TOKEN = process.env.REACT_APP_TELEGRAM_BOT_TOKEN;
@@ -102,17 +104,18 @@ export const useBookingActions = () => {
     date: Date
   ): string[] {
     const duration = serviceDurations[selectedService] ?? 1;
-    const weekday = getISODay(date) - 1;
+    const rule = getRuleForDate(date);
 
-    const scheduleStartDate = new Date(2025, 8, 22);
+    console.log(
+      "date",
+      format(date, "yyyy-MM-dd"),
+      "bookedSlots",
+      booked.map((b) => b.time),
+      "rule start",
+      rule.startHour
+    );
 
-    const weekDiff = differenceInCalendarWeeks(date, scheduleStartDate);
-    const scheduleWeekNumber = (((weekDiff % 2) + 2) % 2) + 1;
-
-    const weekRules = rules[scheduleWeekNumber] || rules[1];
-    const rule = weekRules[weekday];
     if (!rule) return [];
-
     if (rule.allowed !== "all" && !rule.allowed.includes(selectedService))
       return [];
 
