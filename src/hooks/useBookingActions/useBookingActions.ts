@@ -1,11 +1,10 @@
-import { differenceInCalendarWeeks, format, getISODay } from "date-fns";
+import { format } from "date-fns";
 import { useAppDispatch } from "../../store/hooks";
 import {
   deleteOutdatedBookings,
   loadBookedDates,
 } from "../../store/slices/bookedDatesSlice";
 import { useEffect, useState } from "react";
-import { rules } from "../../constants/schedule";
 import { getRuleForDate } from "../../utils/getRuleForDate";
 
 export type FormData = {
@@ -110,9 +109,19 @@ export const useBookingActions = () => {
     if (rule.allowed !== "all" && !rule.allowed.includes(selectedService))
       return [];
 
-    const excluded = new Set(
-      booked.map((b) => b.time).filter(Boolean) as string[]
-    );
+    const excluded = new Set<string>();
+
+    booked.forEach((b) => {
+      if (!b.time || !b.service) return;
+
+      const bookedDuration = serviceDurations[b.service];
+
+      const startHour = parseInt(b.time.split(":")[0], 10);
+      for (let offset = 0; offset < bookedDuration; offset++) {
+        const hour = startHour + offset;
+        excluded.add(`${hour.toString().padStart(2, "0")}:00`);
+      }
+    });
 
     const slots: string[] = [];
     for (let h = rule.startHour; h <= 21 - duration; h++) {
