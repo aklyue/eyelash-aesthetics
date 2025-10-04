@@ -5,17 +5,27 @@ interface BookedDate {
   date: string;
   time: string;
   service: string;
+  name: string;
+  telegram: string;
+  details: string;
 }
 
 export const loadBookedDates = createAsyncThunk(
   "bookedDates/load",
   async () => {
     const res = await fetch(
-      `https://eyelash-aesthetics-api-080x.onrender.com/bookedDates`
+      `https://eyelash-aesthetics-api.onrender.com/bookedDates`
     );
     const data = await res.json();
     return data.map(
-      (item: { date: string; time: string; service: string }) => item
+      (item: {
+        date: string;
+        time: string;
+        service: string;
+        name: string;
+        telegram: string;
+        details: string;
+      }) => item
     );
   }
 );
@@ -33,7 +43,7 @@ export const deleteOutdatedBookings = createAsyncThunk(
     for (const booking of bookedData) {
       if (booking.date < todayStr) {
         await fetch(
-          `https://eyelash-aesthetics-api-080x.onrender.com/bookedDates/${booking.id}`,
+          `https://eyelash-aesthetics-api.onrender.com/bookedDates/${booking.id}`,
           {
             method: "DELETE",
           }
