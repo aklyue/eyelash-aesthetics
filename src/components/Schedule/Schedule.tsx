@@ -14,17 +14,18 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import { rules } from "../../constants/schedule";
 import { weekdays } from "../../constants/weekdays";
 import { servicelist } from "../../constants/servicelist";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExpandMore } from "@mui/icons-material";
 import { FilterList } from "@mui/icons-material";
 import useScheduleActions from "../../hooks/useScheduleActions";
+import { useAppSelector } from "../../store/hooks";
 
 function Schedule() {
   const weeks = [1, 2];
   const theme = useTheme();
+  const { data: rules } = useAppSelector((state) => state.schedule);
 
   const {
     selectedServices,

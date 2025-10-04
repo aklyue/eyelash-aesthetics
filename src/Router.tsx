@@ -4,6 +4,7 @@ import Footer from "./components/UI/Footer";
 import MainPage from "./pages/MainPage";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import AnimatedUI from "./components/UI/AnimatedUI";
+import AdminPage from "./pages/AdminPage";
 
 function Router() {
   const theme = useTheme();
@@ -19,6 +20,7 @@ function Router() {
     >
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <AnimatedUI isHeader={false}>
         <Footer isMobile={isMobile} />

@@ -1,8 +1,9 @@
 import { useEffect, useMemo } from "react";
 import Router from "./Router";
 import { CssBaseline, GlobalStyles, ThemeProvider } from "@mui/material";
-import { useAppSelector } from "./store/hooks";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { getTheme } from "./theme";
+import { fetchSchedule } from "./store/slices/scheduleSlice";
 
 function App() {
   useEffect(() => {
@@ -10,6 +11,12 @@ function App() {
   }, []);
   const mode = useAppSelector((state) => state.theme.mode);
   const theme = useMemo(() => getTheme(mode), [mode]);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSchedule());
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme}>

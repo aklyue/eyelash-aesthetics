@@ -1,10 +1,7 @@
 import { format } from "date-fns";
-import { useAppDispatch } from "../../store/hooks";
-import {
-  deleteOutdatedBookings,
-  loadBookedDates,
-} from "../../store/slices/bookedDatesSlice";
-import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
+import { useState } from "react";
 import { getRuleForDate } from "../../utils/getRuleForDate";
 
 export type FormData = {
@@ -29,6 +26,7 @@ const TELEGRAM_CHAT_ID = process.env.REACT_APP_TELEGRAM_CHAT_ID;
 
 export const useBookingActions = () => {
   const dispatch = useAppDispatch();
+  const { data: schedule } = useAppSelector((state) => state.schedule);
   const [status, setStatus] = useState<"success" | "error" | null>(null);
   const [paymentFile, setPaymentFile] = useState<File | null>(null);
 
@@ -73,21 +71,18 @@ export const useBookingActions = () => {
       if (data.date) {
         const dateDb = format(data.date, "yyyy-MM-dd");
 
-        await fetch(
-          "https://eyelash-aesthetics-api.onrender.com/bookedDates",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              date: dateDb,
-              time: data.time,
-              service: data.service,
-              name: data.name,
-              telegram: data.telegram,
-              details: data.details,
-            }),
-          }
-        );
+        await fetch("https://eyelash-aesthetics-api.onrender.com/bookedDates", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            date: dateDb,
+            time: data.time,
+            service: data.service,
+            name: data.name,
+            telegram: data.telegram,
+            details: data.details,
+          }),
+        });
 
         await dispatch(loadBookedDates()).unwrap();
       }
@@ -106,7 +101,7 @@ export const useBookingActions = () => {
     date: Date
   ): string[] {
     const duration = serviceDurations[selectedService] ?? 1;
-    const rule = getRuleForDate(date);
+    const rule = getRuleForDate(date, schedule);
 
     if (!rule) return [];
     if (rule.allowed !== "all" && !rule.allowed.includes(selectedService))
@@ -142,16 +137,6 @@ export const useBookingActions = () => {
 
     return slots;
   }
-
-  useEffect(() => {
-    const lastCheck = localStorage.getItem("lastCleanupDate");
-    const todayStr = format(new Date(), "yyyy-MM-dd");
-
-    if (lastCheck !== todayStr) {
-      dispatch(deleteOutdatedBookings());
-      localStorage.setItem("lastCleanupDate", todayStr);
-    }
-  }, []);
 
   return {
     handleBooking,

@@ -6,11 +6,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { StaticDatePicker } from "@mui/x-date-pickers";
-import {
-  addDays,
-  isBefore,
-  startOfDay,
-} from "date-fns";
+import { addDays, isBefore, startOfDay } from "date-fns";
 import { format } from "date-fns";
 import {
   Control,
@@ -36,13 +32,14 @@ function ReservationBlock({
   service,
   control,
   watch,
-  errors
+  errors,
 }: ReservationBlockProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isSmMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { getAvailableTimeSlots } = useBookingActions();
   const bookedDates = useAppSelector((state) => state.bookedDates);
+  const { data: schedule } = useAppSelector((state) => state.schedule);
   const selectedService = service;
 
   return (
@@ -93,7 +90,7 @@ function ReservationBlock({
 
               const isNoSlotAvailable = availableSlots.length === 0;
 
-              const rule = getRuleForDate(date);
+              const rule = getRuleForDate(date, schedule);
               const isNotAllowed =
                 !rule ||
                 (rule.allowed !== "all" &&
