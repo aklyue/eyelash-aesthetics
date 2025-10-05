@@ -2,8 +2,10 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Alert,
   Box,
   IconButton,
+  Snackbar,
   Typography,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
@@ -18,7 +20,6 @@ import useBookingEditActions from "../../hooks/useBookingEditActions";
 import AddBookingModal from "../UI/AddBookingModal";
 
 export function BookingEditor() {
-
   const {
     bookedDates,
     setDeleteId,
@@ -157,6 +158,7 @@ export function BookingEditor() {
           onConfirm={handleAddConfirm}
         />
       </Box>
+     
     </Box>
   );
 }

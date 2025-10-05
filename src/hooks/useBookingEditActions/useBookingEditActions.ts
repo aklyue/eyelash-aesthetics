@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
+import { setSnackbar } from "../../store/slices/snackbarSlice";
 
 export const useBookingEditActions = () => {
   const bookedDates = useAppSelector((state) => state.bookedDates);
@@ -44,8 +45,23 @@ export const useBookingEditActions = () => {
       if (res.ok) {
         await dispatch(loadBookedDates()).unwrap();
         setDeleteId(null);
+        dispatch(
+          setSnackbar({
+            message: "Запись удалена",
+            severity: "success",
+            open: true,
+          })
+        );
       }
     } catch (e) {
+      setDeleteId(null);
+      dispatch(
+        setSnackbar({
+          message: "Ошибка удаления записи",
+          severity: "error",
+          open: true,
+        })
+      );
       console.error(e);
     }
   };
@@ -76,8 +92,23 @@ export const useBookingEditActions = () => {
       if (res.ok) {
         await dispatch(loadBookedDates()).unwrap();
         setEditId(null);
+        dispatch(
+          setSnackbar({
+            message: "Запись редактирована",
+            severity: "success",
+            open: true,
+          })
+        );
       }
     } catch (e) {
+      setEditId(null);
+      dispatch(
+        setSnackbar({
+          message: "Ошибка редактирования записи",
+          severity: "error",
+          open: true,
+        })
+      );
       console.error(e);
     }
   };
@@ -88,11 +119,14 @@ export const useBookingEditActions = () => {
 
   const handleAddConfirm = async () => {
     try {
-      const res = await fetch("https://eyelash-aesthetics-api.onrender.com/admin/bookedDates", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...addData, password }),
-      });
+      const res = await fetch(
+        "https://eyelash-aesthetics-api.onrender.com/admin/bookedDates",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...addData, password }),
+        }
+      );
       if (res.ok) {
         await dispatch(loadBookedDates()).unwrap();
         setIsAddOpen(false);
@@ -104,8 +138,22 @@ export const useBookingEditActions = () => {
           telegram: "",
           details: "",
         });
+        dispatch(
+          setSnackbar({
+            message: "Запись добавлена",
+            severity: "success",
+            open: true,
+          })
+        );
       }
     } catch (e) {
+      dispatch(
+        setSnackbar({
+          message: "Ошибка добавления записи",
+          severity: "error",
+          open: true,
+        })
+      );
       console.error(e);
     }
   };

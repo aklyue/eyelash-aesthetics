@@ -14,7 +14,7 @@ export const loadBookedDates = createAsyncThunk(
   "bookedDates/load",
   async () => {
     const res = await fetch(
-      `https://eyelash-aesthetics-api.onrender.com/bookedDates`
+      `http://localhost:3001/bookedDates`
     );
     const data = await res.json();
     return data.map(

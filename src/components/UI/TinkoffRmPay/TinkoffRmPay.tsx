@@ -12,6 +12,8 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CloseIcon from "@mui/icons-material/Close";
 import { ReactComponent as TBankLogo } from "../../../assets/logo/tbank-logo.svg";
 import usePayment from "../../../hooks/usePayment";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { closeSnackbar } from "../../../store/slices/snackbarSlice";
 
 const TinkoffRmPay = ({
   onFileSelected,
@@ -20,13 +22,11 @@ const TinkoffRmPay = ({
   onFileSelected: (file: File | null) => void;
   isMobile: boolean;
 }) => {
-  const {
-    handleFileChange,
-    handleFileDelete,
-    file,
-    successOpen,
-    setSuccessOpen,
-  } = usePayment(onFileSelected);
+  const { handleFileChange, handleFileDelete, file } =
+    usePayment(onFileSelected);
+
+  const { snackbar } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
 
   return (
     <Box sx={{ mt: 4, px: isMobile ? 0 : 4 }}>
@@ -120,20 +120,38 @@ const TinkoffRmPay = ({
           <strong>Внимание!</strong> Предоплата составляет <strong>50%</strong>.
           Если вы не прикрепите скриншот оплаты, бронирование не будет{" "}
           <strong>подтверждено</strong>.
-          <br /> <br />
-            * Предоплата не возвращается, если вы отменяете бронь меньше, чем за
-            два дня до процедуры!
+          <br /> <br />* Предоплата не возвращается, если вы отменяете бронь
+          меньше, чем за два дня до процедуры!
         </Typography>
       </Stack>
 
       <Snackbar
-        open={successOpen}
-        autoHideDuration={3000}
-        onClose={() => setSuccessOpen(false)}
+        open={snackbar?.open || false}
+        autoHideDuration={4000}
+        onClose={() => dispatch(closeSnackbar())}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert severity="success" sx={{ width: "100%" }}>
-          Чек успешно прикреплён
-        </Alert>
+        {snackbar?.severity ? (
+          <Alert
+            onClose={() => dispatch(closeSnackbar())}
+            severity={snackbar.severity}
+            variant="standard"
+            sx={{
+              width: "100%",
+              border: "1px solid",
+              borderColor:
+                snackbar.severity === "error"
+                  ? "red"
+                  : snackbar.severity === "warning"
+                  ? "orange"
+                  : snackbar.severity === "info"
+                  ? "blue"
+                  : "green",
+            }}
+          >
+            {snackbar.message}
+          </Alert>
+        ) : undefined}
       </Snackbar>
     </Box>
   );

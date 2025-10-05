@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { servicelist as services } from "../../constants/servicelist";
 import { Schedule, updateSchedule } from "../../store/slices/scheduleSlice";
+import { setSnackbar } from "../../store/slices/snackbarSlice";
 
 export const useScheduleEditActions = () => {
   const dispatch = useAppDispatch();
@@ -47,19 +48,34 @@ export const useScheduleEditActions = () => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch("https://eyelash-aesthetics-api.onrender.com/admin/schedule", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...localSchedule, password }),
-      });
+      const res = await fetch(
+        "https://eyelash-aesthetics-api.onrender.com/admin/schedule",
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...localSchedule, password }),
+        }
+      );
       if (!res.ok) throw new Error("Failed to save schedule");
 
       const updated = await res.json();
       dispatch(updateSchedule(updated));
-      alert("Расписание сохранено");
+      dispatch(
+        setSnackbar({
+          message: "Расписание сохранено",
+          severity: "success",
+          open: true,
+        })
+      );
     } catch (e) {
       console.error(e);
-      alert("Ошибка при сохранении");
+      dispatch(
+        setSnackbar({
+          message: "Ошибка редактирования расписания",
+          severity: "error",
+          open: true,
+        })
+      );
     }
   };
 

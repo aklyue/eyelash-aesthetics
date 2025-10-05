@@ -1,15 +1,23 @@
 import { useState } from "react";
+import { setSnackbar } from "../../store/slices/snackbarSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 export const usePayment = (onFileSelected: (file: File | null) => void) => {
   const [file, setFile] = useState<File | null>(null);
-  const [successOpen, setSuccessOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selected = e.target.files?.[0] || null;
     if (selected) {
       setFile(selected);
       onFileSelected(selected);
-      setSuccessOpen(true);
+      dispatch(
+        setSnackbar({
+          message: "Чек успешно прикреплён",
+          severity: "success",
+          open: true,
+        })
+      );
     }
   };
 
@@ -22,7 +30,5 @@ export const usePayment = (onFileSelected: (file: File | null) => void) => {
     handleFileChange,
     handleFileDelete,
     file,
-    successOpen,
-    setSuccessOpen,
   };
 };

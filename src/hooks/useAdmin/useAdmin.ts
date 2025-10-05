@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   loginError,
@@ -5,6 +6,7 @@ import {
   setPassword,
 } from "../../store/slices/adminSlice";
 import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
+import { setSnackbar } from "../../store/slices/snackbarSlice";
 
 export const useAdmin = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +14,7 @@ export const useAdmin = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("https://eyelash-aesthetics-api.onrender.com/admin/login", {
+      const res = await fetch("http://localhost:3001/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
@@ -24,9 +26,23 @@ export const useAdmin = () => {
         dispatch(loadBookedDates());
       } else {
         dispatch(loginError("Неверный пароль"));
+        dispatch(
+          setSnackbar({
+            message: "Неверный пароль",
+            severity: "error",
+            open: true,
+          })
+        );
       }
     } catch {
       dispatch(loginError("Ошибка подключения"));
+      dispatch(
+        setSnackbar({
+          message: "Ошибка подключения",
+          severity: "error",
+          open: true,
+        })
+      );
     }
   };
 

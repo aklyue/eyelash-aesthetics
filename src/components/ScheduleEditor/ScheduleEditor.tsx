@@ -156,7 +156,7 @@ export function ScheduleEditor() {
           <Typography>Вы уверены, что хотите сохранить изменения?</Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeModal}>Закрыть</Button>
+          <Button onClick={closeModal}>Отмена</Button>
           <Button color="success" onClick={handleSave}>
             Сохранить
           </Button>

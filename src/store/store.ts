@@ -3,6 +3,7 @@ import themeReducer from "./slices/themeSlice";
 import bookedDatesReducer from "./slices/bookedDatesSlice";
 import adminReducer from "./slices/adminSlice";
 import scheduleReducer from "./slices/scheduleSlice";
+import snackbarReducer from "./slices/snackbarSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     bookedDates: bookedDatesReducer,
     admin: adminReducer,
     schedule: scheduleReducer,
+    snackbar: snackbarReducer,
   },
 });
 

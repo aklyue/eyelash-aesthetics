@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import LinkSection from "../UI/LinkSection";
 import TinkoffRmPay from "../UI/TinkoffRmPay";
 import ContactsBackground from "../../assets/background/contacts-background.png";
+import { closeSnackbar } from "../../store/slices/snackbarSlice";
 
 export interface FormData {
   name: string;
@@ -34,7 +35,8 @@ export default function Contacts() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useAppDispatch();
-  const { handleBooking, status, setStatus, setPaymentFile, paymentFile } =
+  const { snackbar } = useAppSelector((state) => state);
+  const { handleBooking, setPaymentFile, paymentFile } =
     useBookingActions();
 
   const {
@@ -247,20 +249,32 @@ export default function Contacts() {
         </Grid>
       </Grid>
       <Snackbar
-        open={!!status}
+        open={snackbar?.open || false}
         autoHideDuration={4000}
-        onClose={() => setStatus(null)}
+        onClose={() => dispatch(closeSnackbar())}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert
-          onClose={() => setStatus(null)}
-          severity={status === "success" ? "success" : "error"}
-          sx={{ width: "100%" }}
-        >
-          {status === "success"
-            ? "Заявка успешно отправлена!"
-            : "Произошла ошибка. Попробуйте позже."}
-        </Alert>
+        {snackbar?.severity ? (
+          <Alert
+            onClose={() => dispatch(closeSnackbar())}
+            severity={snackbar.severity}
+            variant="standard"
+            sx={{
+              width: "100%",
+              border: "1px solid",
+              borderColor:
+                snackbar.severity === "error"
+                  ? "red"
+                  : snackbar.severity === "warning"
+                  ? "orange"
+                  : snackbar.severity === "info"
+                  ? "blue"
+                  : "green",
+            }}
+          >
+            {snackbar.message}
+          </Alert>
+        ) : undefined}
       </Snackbar>
     </Box>
   );

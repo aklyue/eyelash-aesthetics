@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
 import { useState } from "react";
 import { getRuleForDate } from "../../utils/getRuleForDate";
+import { setSnackbar } from "../../store/slices/snackbarSlice";
+import usePayment from "../usePayment";
 
 export type FormData = {
   name: string;
@@ -27,12 +29,17 @@ const TELEGRAM_CHAT_ID = process.env.REACT_APP_TELEGRAM_CHAT_ID;
 export const useBookingActions = () => {
   const dispatch = useAppDispatch();
   const { data: schedule } = useAppSelector((state) => state.schedule);
-  const [status, setStatus] = useState<"success" | "error" | null>(null);
   const [paymentFile, setPaymentFile] = useState<File | null>(null);
 
   const handleBooking = async (data: FormData) => {
     if (!paymentFile) {
-      setStatus("error");
+      dispatch(
+        setSnackbar({
+          message: "Файл не выбран",
+          severity: "error",
+          open: true,
+        })
+      );
       console.warn("Оплата не подтверждена. Заявка не отправлена.");
       return;
     }
@@ -87,11 +94,23 @@ export const useBookingActions = () => {
         await dispatch(loadBookedDates()).unwrap();
       }
 
-      setStatus("success");
+      dispatch(
+        setSnackbar({
+          message: "Заявка успешно отправлена",
+          severity: "success",
+          open: true,
+        })
+      );
       setPaymentFile(null);
     } catch (err) {
       console.error(err);
-      setStatus("error");
+      dispatch(
+        setSnackbar({
+          message: "Произошла ошибка",
+          severity: "error",
+          open: true,
+        })
+      );
     }
   };
 
@@ -140,8 +159,6 @@ export const useBookingActions = () => {
 
   return {
     handleBooking,
-    status,
-    setStatus,
     getAvailableTimeSlots,
     setPaymentFile,
     paymentFile,
