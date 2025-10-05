@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   loginError,
@@ -14,7 +13,7 @@ export const useAdmin = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:3001/admin/login", {
+      const res = await fetch("https://eyelash-aesthetics-api.onrender.com/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),

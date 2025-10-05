@@ -131,6 +131,9 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                     width: 50,
                     height: 50,
                     p: 0,
+                    "&:hover": {
+                      bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined
+                    }
                   }}
                 >
                   <Logo width={40} height={40} />

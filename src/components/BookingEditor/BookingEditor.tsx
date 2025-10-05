@@ -50,7 +50,7 @@ export function BookingEditor() {
             py: 2,
           }}
         >
-          <Typography color="" variant="h5">
+          <Typography color="" variant="h6">
             Записи
           </Typography>
           <IconButton
@@ -65,6 +65,8 @@ export function BookingEditor() {
           <Accordion
             key={b.id}
             sx={{
+              bgcolor: "rgba(0,0,0,0)",
+              boxShadow: "none",
               "&:before": {
                 display: index === 0 ? "none" : "block",
               },
@@ -115,7 +117,7 @@ export function BookingEditor() {
                 </Box>
               </Box>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails sx={{ px: 4 }}>
               <Typography>
                 {b.name}
                 <Link
@@ -158,7 +160,6 @@ export function BookingEditor() {
           onConfirm={handleAddConfirm}
         />
       </Box>
-     
     </Box>
   );
 }

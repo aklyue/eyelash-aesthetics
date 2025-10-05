@@ -40,18 +40,34 @@ function AdminPanel() {
       <Box
         sx={{
           px: isMobile ? 2 : 8,
-          py: 8,
+          py: 4,
           backgroundColor: theme.palette.background.default,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
+        {!isMobile && (
+          <Typography variant="h5" mb={2} textAlign={"center"}>
+            Вход
+          </Typography>
+        )}
         <Box
           sx={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row",
             alignItems: "center",
             justifyContent: "center",
             gap: 1,
+            width: "fit-content",
           }}
         >
+          {isMobile && (
+            <Typography variant="h5" mb={2}>
+              Вход
+            </Typography>
+          )}
           <TextField
             size="small"
             label="Пароль"
@@ -64,7 +80,7 @@ function AdminPanel() {
               }
             }}
           />
-          <Button sx={{ height: 40 }} onClick={handleLogin}>
+          <Button variant="outlined" sx={{ height: 40 }} fullWidth={isMobile ? true : false} onClick={handleLogin}>
             Войти
           </Button>
           {error && (
@@ -77,9 +93,20 @@ function AdminPanel() {
               {snackbar?.severity ? (
                 <Alert
                   onClose={() => dispatch(closeSnackbar())}
-                  variant="outlined"
+                  variant="standard"
+                  sx={{
+                    width: "100%",
+                    border: "1px solid",
+                    borderColor:
+                      snackbar.severity === "error"
+                        ? "red"
+                        : snackbar.severity === "warning"
+                        ? "orange"
+                        : snackbar.severity === "info"
+                        ? "blue"
+                        : "green",
+                  }}
                   severity={snackbar.severity}
-                  sx={{ width: "100%" }}
                 >
                   {snackbar.message}
                 </Alert>
@@ -93,7 +120,7 @@ function AdminPanel() {
 
   return (
     <AnimatedUI isHeader={false}>
-      <Box sx={{ px: isMobile ? 2 : 8, py: 8 }}>
+      <Box sx={{ px: isMobile ? 2 : 8, py: 4 }}>
         <Typography variant="h5" mb={3}>
           Админ-панель
         </Typography>

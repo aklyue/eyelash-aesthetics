@@ -66,15 +66,20 @@ export default function Services() {
               expandIcon={
                 <Box
                   sx={{
-                    transform:
-                      expanded === index ? "rotate(45deg)" : "rotate(0deg)",
-                    transition: "transform 0.3s ease-in-out",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <AddIcon sx={{ fontSize: 24 }} />
+                  <AddIcon
+                    sx={{
+                      fontSize: 24,
+                      transform:
+                        expanded === index ? "rotate(-45deg)" : "rotate(0deg)",
+                      transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      transformOrigin: "center center",
+                    }}
+                  />
                 </Box>
               }
             >

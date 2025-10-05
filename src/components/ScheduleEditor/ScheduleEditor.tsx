@@ -59,7 +59,7 @@ export function ScheduleEditor() {
           py: 2,
         }}
       >
-        <Typography variant="h5">Расписание</Typography>
+        <Typography variant="h6">Расписание</Typography>
         <Button onClick={openModal}>
           <Save sx={{ mr: 0.5 }} />
           Сохранить
@@ -75,18 +75,27 @@ export function ScheduleEditor() {
               Неделя {week}
             </Typography>
 
-            {Object.entries(weekRules).map(([dayStr, rule]) => {
+            {Object.entries(weekRules).map(([dayStr, rule], index) => {
               const day = parseInt(dayStr, 10);
               const dayName = weekDays[day] || `День ${day}`;
 
               return (
-                <Accordion key={day}>
+                <Accordion
+                  key={day}
+                  sx={{
+                    bgcolor: "rgba(0,0,0,0)",
+                    boxShadow: "none",
+                    "&:before": {
+                      height: "0.5px"
+                    },
+                  }}
+                >
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="body1">
                       <strong>{dayName}</strong>
                     </Typography>
                   </AccordionSummary>
-                  <AccordionDetails>
+                  <AccordionDetails sx={{ px: 4 }}>
                     <Box display="flex" alignItems="center" gap={2} mb={2}>
                       <TextField
                         label="Начало (час)"
