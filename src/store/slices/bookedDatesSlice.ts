@@ -14,7 +14,6 @@ interface BookedDate {
 export const loadBookedDates = createAsyncThunk(
   "bookedDates/load",
   async () => {
-    console.log(process.env.REACT_APP_API_URL);
     const res = await fetch(`${API_URL}/bookedDates`);
     const data = await res.json();
     return data.map(
