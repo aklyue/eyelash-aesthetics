@@ -1,4 +1,11 @@
-import { IconButton, Stack, Box, Typography } from "@mui/material";
+import {
+  IconButton,
+  Stack,
+  Box,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,6 +19,9 @@ function SectionNavigator({ headerRef }: SectionNavigatorProps) {
   const { next, prev, scrollUp, scrollDown } = useSectionNavigation({
     headerRef,
   });
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const getTypography = (text: string) => (
     <Typography variant="caption" component="span" sx={{ m: 0, color: "#000" }}>
@@ -65,7 +75,7 @@ function SectionNavigator({ headerRef }: SectionNavigatorProps) {
             backgroundColor: "rgba(0, 0, 0, 0.4)",
             color: "#fff",
             "&:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
+              backgroundColor: isMobile ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.6)",
             },
             "&.Mui-disabled": { backgroundColor: "rgba(0, 0, 0, 0.2)" },
             width: 48,
@@ -84,7 +94,7 @@ function SectionNavigator({ headerRef }: SectionNavigatorProps) {
             backgroundColor: "rgba(0, 0, 0, 0.4)",
             color: "#fff",
             "&:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.6)",
+              backgroundColor: isMobile ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.6)",
             },
             "&.Mui-disabled": { backgroundColor: "rgba(0, 0, 0, 0.2)" },
             width: 48,

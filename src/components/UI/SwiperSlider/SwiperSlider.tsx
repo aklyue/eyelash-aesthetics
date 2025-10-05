@@ -109,7 +109,7 @@ function SwiperSlider({ isMobile }: WithIsMobile) {
                   left: 16,
                   transform: "translateY(-50%)",
                   backgroundColor: "rgba(0, 0, 0, 0.4)",
-                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" },
+                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.4)" },
                   zIndex: 2,
                   color: theme.palette.custom.sectionDark,
                 }}
@@ -124,7 +124,7 @@ function SwiperSlider({ isMobile }: WithIsMobile) {
                   right: 16,
                   transform: "translateY(-50%)",
                   backgroundColor: "rgba(0, 0, 0, 0.4)",
-                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" },
+                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.4)" },
                   zIndex: 2,
                   color: theme.palette.custom.sectionDark,
                 }}
