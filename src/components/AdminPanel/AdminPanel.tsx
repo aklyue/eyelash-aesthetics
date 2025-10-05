@@ -80,7 +80,17 @@ function AdminPanel() {
               }
             }}
           />
-          <Button variant="outlined" sx={{ height: 40 }} fullWidth={isMobile ? true : false} onClick={handleLogin}>
+          <Button
+            variant="outlined"
+            sx={{
+              height: 40,
+              "&:hover": {
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+              },
+            }}
+            fullWidth={isMobile ? true : false}
+            onClick={handleLogin}
+          >
             Войти
           </Button>
           {error && (
