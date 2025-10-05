@@ -130,8 +130,8 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                     height: 50,
                     p: 0,
                     "&:hover": {
-                      bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined
-                    }
+                      bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                    },
                   }}
                 >
                   <Logo width={40} height={40} />
@@ -226,7 +226,9 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   transition: "all 0.2s ease",
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    backgroundColor: isMobile
+                      ? "rgba(255, 255, 255, 0.3)"
+                      : "rgba(255, 255, 255, 0.5)",
                     boxShadow: "0 4px 40px rgba(0, 0, 0, 0.15)",
                   },
                 }}

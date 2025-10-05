@@ -58,7 +58,9 @@ const TinkoffRmPay = ({
             WebkitBackdropFilter: "blur(8px)",
           }}
           onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = "rgba(251, 255, 24, 0.2)")
+            (e.currentTarget.style.backgroundColor = isMobile
+              ? "rgba(255, 255, 255, 0.05)"
+              : "rgba(251, 255, 24, 0.2)")
           }
           onMouseLeave={(e) =>
             (e.currentTarget.style.backgroundColor =
@@ -81,7 +83,15 @@ const TinkoffRmPay = ({
         />
 
         <label htmlFor="upload-check">
-          <Button variant="outlined" component="span">
+          <Button
+            variant="outlined"
+            component="span"
+            sx={{
+              "&:hover": {
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+              },
+            }}
+          >
             Прикрепить чек
           </Button>
         </label>
@@ -111,7 +121,15 @@ const TinkoffRmPay = ({
               </Typography>
             </Stack>
 
-            <IconButton onClick={handleFileDelete} size="small">
+            <IconButton
+              onClick={handleFileDelete}
+              size="small"
+              sx={{
+                "&:hover": {
+                  bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                },
+              }}
+            >
               <CloseIcon fontSize="small" sx={{ color: "error.main" }} />
             </IconButton>
           </Paper>

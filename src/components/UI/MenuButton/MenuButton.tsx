@@ -1,5 +1,5 @@
 import React, { RefObject } from "react";
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 
 interface MenuButtonProps {
@@ -10,6 +10,7 @@ interface MenuButtonProps {
 
 function MenuButton({ open, toggle, ref }: MenuButtonProps) {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const lineProps = {
     transition: { duration: 0.2 },
@@ -25,6 +26,9 @@ function MenuButton({ open, toggle, ref }: MenuButtonProps) {
       sx={{
         width: 40,
         height: 40,
+        "&:hover": {
+          bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+        },
       }}
     >
       <Box component="svg" width="24" height="24" viewBox="0 0 24 24">

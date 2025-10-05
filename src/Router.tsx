@@ -25,11 +25,9 @@ function Router() {
         <Route path="/" element={<MainPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      {!isCheckingAuth && (
-        <AnimatedUI isHeader={false}>
-          <Footer isMobile={isMobile} />
-        </AnimatedUI>
-      )}
+      <AnimatedUI isHeader={false}>
+        <Footer isMobile={isMobile} />
+      </AnimatedUI>
     </Box>
   );
 }
