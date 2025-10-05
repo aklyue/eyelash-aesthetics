@@ -4,7 +4,6 @@ import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
 import { useState } from "react";
 import { getRuleForDate } from "../../utils/getRuleForDate";
 import { setSnackbar } from "../../store/slices/snackbarSlice";
-import usePayment from "../usePayment";
 
 export type FormData = {
   name: string;
@@ -25,6 +24,7 @@ const serviceDurations: Record<string, number> = {
 
 const TELEGRAM_BOT_TOKEN = process.env.REACT_APP_TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.REACT_APP_TELEGRAM_CHAT_ID;
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const useBookingActions = () => {
   const dispatch = useAppDispatch();
@@ -78,7 +78,7 @@ export const useBookingActions = () => {
       if (data.date) {
         const dateDb = format(data.date, "yyyy-MM-dd");
 
-        await fetch("https://eyelash-aesthetics-api.onrender.com/bookedDates", {
+        await fetch(`${API_URL}/bookedDates`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

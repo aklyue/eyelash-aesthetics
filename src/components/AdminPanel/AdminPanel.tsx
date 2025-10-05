@@ -2,6 +2,7 @@ import {
   Alert,
   Box,
   Button,
+  CircularProgress,
   Snackbar,
   Tab,
   Tabs,
@@ -22,6 +23,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { closeSnackbar } from "../../store/slices/snackbarSlice";
 
 function AdminPanel() {
+  const { isLoading } = useAppSelector((state) => state.loading);
+
   const swiperRef = useRef<SwiperType | null>(null);
   const { snackbar } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
@@ -84,9 +87,11 @@ function AdminPanel() {
             variant="outlined"
             sx={{
               height: 40,
+              color: "#ba68a9ff",
               "&:hover": {
-                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ba68a91d",
               },
+              border: "1px solid #ba68a9ff",
             }}
             fullWidth={isMobile ? true : false}
             onClick={handleLogin}
@@ -124,6 +129,24 @@ function AdminPanel() {
             </Snackbar>
           )}
         </Box>
+        {isLoading && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#f8eff47a",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 10,
+            }}
+          >
+            <CircularProgress sx={{ color: theme.palette.text.primary }} />
+          </Box>
+        )}
       </Box>
     );
   }

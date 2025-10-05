@@ -94,7 +94,7 @@ function Schedule() {
         <Box
           display="flex"
           alignItems={"center"}
-          gap={0.5}
+          gap={1}
           flexWrap="wrap"
           minHeight={35}
           mb={1}
@@ -113,13 +113,14 @@ function Schedule() {
                   display: "flex",
                   alignItems: "center",
                   color: "rgba(36, 36, 36, 1)",
-                  border: "1px solid #848484",
+                  // border: "1px solid #848484",
                   bgcolor: "rgba(254, 211, 230, 0.6)",
                   borderRadius: "4px",
                   px: 2,
                   maxHeight: 35,
                   py: 0.5,
                   gap: 1,
+                  boxShadow: 1,
                 }}
               >
                 <Typography noWrap variant="body2">
@@ -248,7 +249,7 @@ function Schedule() {
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.15 }}
                           p={2}
-                          border="1px solid #ccc"
+                          // border="1px solid #ccc"
                           borderRadius="12px"
                           boxShadow={2}
                           display="flex"
@@ -279,7 +280,9 @@ function Schedule() {
                                 variant="outlined"
                                 sx={{
                                   color: "rgba(36, 36, 36, 1)",
-                                  border: "1px solid #848484",
+                                  // border: "1px solid #848484",
+                                  border: "none",
+                                  boxShadow: 1,
                                   backgroundColor: selectedServices.includes(s)
                                     ? "rgba(254, 211, 230, 0.6)"
                                     : "rgba(0, 0, 0, 0)",

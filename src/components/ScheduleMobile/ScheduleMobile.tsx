@@ -119,7 +119,7 @@ function ScheduleMobile() {
 
       <Box
         display="flex"
-        gap={0.5}
+        gap={1}
         minHeight={35}
         alignItems="center"
         flexWrap="wrap"
@@ -138,7 +138,8 @@ function ScheduleMobile() {
                 display: "flex",
                 alignItems: "center",
                 color: "rgba(36, 36, 36, 1)",
-                border: "1px solid #848484",
+                // border: "1px solid #848484",
+                boxShadow: 1,
                 bgcolor: "rgba(254, 211, 230, 0.6)",
                 borderRadius: "4px",
                 px: 1,
@@ -291,7 +292,9 @@ function ScheduleMobile() {
                                 variant="outlined"
                                 sx={{
                                   color: "rgba(36,36,36,1)",
-                                  border: "1px solid #848484",
+                                  // border: "1px solid #848484",
+                                  border: "none",
+                                  boxShadow: 1,
                                   backgroundColor: selectedServices.includes(s)
                                     ? "rgba(254, 211, 230, 0.6)"
                                     : "transparent",

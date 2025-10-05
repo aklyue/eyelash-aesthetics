@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
 import { setSnackbar } from "../../store/slices/snackbarSlice";
+import { setLoading } from "../../store/slices/loadingSlice";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const useBookingEditActions = () => {
   const bookedDates = useAppSelector((state) => state.bookedDates);
@@ -33,16 +36,15 @@ export const useBookingEditActions = () => {
 
   const handleDeleteConfirm = async () => {
     if (!deleteId) return;
+    dispatch(setLoading(true));
     try {
-      const res = await fetch(
-        `https://eyelash-aesthetics-api.onrender.com/admin/bookedDates/${deleteId}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ password }),
-        }
-      );
+      const res = await fetch(`${API_URL}/admin/bookedDates/${deleteId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
       if (res.ok) {
+        dispatch(setLoading(false));
         await dispatch(loadBookedDates()).unwrap();
         setDeleteId(null);
         dispatch(
@@ -63,6 +65,8 @@ export const useBookingEditActions = () => {
         })
       );
       console.error(e);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -80,16 +84,15 @@ export const useBookingEditActions = () => {
 
   const handleEditConfirm = async () => {
     if (!editId) return;
+    dispatch(setLoading(true));
     try {
-      const res = await fetch(
-        `https://eyelash-aesthetics-api.onrender.com/admin/bookedDates/${editId}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...editData, password }),
-        }
-      );
+      const res = await fetch(`${API_URL}/admin/bookedDates/${editId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...editData, password }),
+      });
       if (res.ok) {
+        dispatch(setLoading(false));
         await dispatch(loadBookedDates()).unwrap();
         setEditId(null);
         dispatch(
@@ -110,6 +113,8 @@ export const useBookingEditActions = () => {
         })
       );
       console.error(e);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -118,16 +123,15 @@ export const useBookingEditActions = () => {
   };
 
   const handleAddConfirm = async () => {
+    dispatch(setLoading(true));
     try {
-      const res = await fetch(
-        "https://eyelash-aesthetics-api.onrender.com/admin/bookedDates",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...addData, password }),
-        }
-      );
+      const res = await fetch(`${API_URL}/admin/bookedDates`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...addData, password }),
+      });
       if (res.ok) {
+        dispatch(setLoading(false));
         await dispatch(loadBookedDates()).unwrap();
         setIsAddOpen(false);
         setAddData({
@@ -155,6 +159,8 @@ export const useBookingEditActions = () => {
         })
       );
       console.error(e);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 

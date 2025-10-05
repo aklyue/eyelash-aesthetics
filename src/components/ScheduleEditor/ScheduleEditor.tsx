@@ -20,6 +20,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { servicelist as services } from "../../constants/servicelist";
 import { weekdays as weekDays } from "../../constants/weekdays";
 import useScheduleEditActions from "../../hooks/useScheduleEditActions";
+import { useAppSelector } from "../../store/hooks";
 
 export function ScheduleEditor() {
   const theme = useTheme();
@@ -34,7 +35,10 @@ export function ScheduleEditor() {
     isModalOpen,
     openModal,
     closeModal,
+    scheduleFromRedux,
   } = useScheduleEditActions();
+
+  const { isLoading } = useAppSelector((state) => state.loading);
 
   if (!localSchedule) {
     return (
@@ -44,7 +48,7 @@ export function ScheduleEditor() {
         alignItems="center"
         height="200px"
       >
-        <CircularProgress />
+        <CircularProgress sx={{ color: theme.palette.text.primary }} />
       </Box>
     );
   }
@@ -60,7 +64,12 @@ export function ScheduleEditor() {
         }}
       >
         <Typography variant="h6">Расписание</Typography>
-        <Button onClick={openModal}>
+        <Button
+          onClick={openModal}
+          disabled={
+            JSON.stringify(localSchedule) === JSON.stringify(scheduleFromRedux)
+          }
+        >
           <Save sx={{ mr: 0.5 }} />
           Сохранить
         </Button>
@@ -86,7 +95,7 @@ export function ScheduleEditor() {
                     bgcolor: "rgba(0,0,0,0)",
                     boxShadow: "none",
                     "&:before": {
-                      height: "0.5px"
+                      height: "0.5px",
                     },
                   }}
                 >
@@ -136,14 +145,14 @@ export function ScheduleEditor() {
                               borderRadius: "6px",
                               boxShadow: 1,
                               bgcolor: isAllowed
-                                ? "rgba(242, 191, 214, 0.6)"
+                                ? "rgba(254, 211, 230, 0.6)"
                                 : "rgba(0,0,0,0)",
                               color: "rgba(36,36,36,1)",
                               "&:hover": {
                                 boxShadow: 1,
                                 bgcolor: isMobile
                                   ? undefined
-                                  : "rgba(222, 177, 197, 0.6)",
+                                  : "rgba(234, 194, 212, 0.6)",
                               },
                             }}
                           >
@@ -163,6 +172,25 @@ export function ScheduleEditor() {
         <DialogTitle>Сохранить</DialogTitle>
         <DialogContent>
           <Typography>Вы уверены, что хотите сохранить изменения?</Typography>
+
+          {isLoading && (
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "#f8eff47a",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 10,
+              }}
+            >
+              <CircularProgress sx={{ color: theme.palette.text.primary }} />
+            </Box>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={closeModal}>Отмена</Button>

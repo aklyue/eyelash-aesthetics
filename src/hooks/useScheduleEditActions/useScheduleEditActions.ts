@@ -3,6 +3,9 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { servicelist as services } from "../../constants/servicelist";
 import { Schedule, updateSchedule } from "../../store/slices/scheduleSlice";
 import { setSnackbar } from "../../store/slices/snackbarSlice";
+import { setLoading } from "../../store/slices/loadingSlice";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const useScheduleEditActions = () => {
   const dispatch = useAppDispatch();
@@ -47,9 +50,10 @@ export const useScheduleEditActions = () => {
   };
 
   const handleSave = async () => {
+    dispatch(setLoading(true));
     try {
       const res = await fetch(
-        "https://eyelash-aesthetics-api.onrender.com/admin/schedule",
+        `${API_URL}/admin/schedule`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -76,6 +80,8 @@ export const useScheduleEditActions = () => {
           open: true,
         })
       );
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -97,5 +103,6 @@ export const useScheduleEditActions = () => {
     isModalOpen,
     openModal,
     closeModal,
+    scheduleFromRedux,
   };
 };

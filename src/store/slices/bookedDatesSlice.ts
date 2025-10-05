@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+const API_URL = process.env.REACT_APP_API_URL;
 
 interface BookedDate {
   id: string;
@@ -13,9 +14,8 @@ interface BookedDate {
 export const loadBookedDates = createAsyncThunk(
   "bookedDates/load",
   async () => {
-    const res = await fetch(
-      `https://eyelash-aesthetics-api.onrender.com/bookedDates`
-    );
+    console.log(process.env.REACT_APP_API_URL);
+    const res = await fetch(`${API_URL}/bookedDates`);
     const data = await res.json();
     return data.map(
       (item: {
@@ -36,8 +36,7 @@ const bookedDatesSlice = createSlice({
   initialState: [] as BookedDate[],
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(loadBookedDates.fulfilled, (_, action) => action.payload)
+    builder.addCase(loadBookedDates.fulfilled, (_, action) => action.payload);
   },
 });
 

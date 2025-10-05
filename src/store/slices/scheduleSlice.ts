@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { rules } from "../../constants/schedule";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export interface Rule {
   startHour: number;
@@ -18,7 +19,7 @@ export const fetchSchedule = createAsyncThunk(
   "schedule/fetchSchedule",
   async () => {
     try {
-      const res = await fetch("https://eyelash-aesthetics-api.onrender.com/schedule");
+      const res = await fetch(`${API_URL}/schedule`);
       if (!res.ok) throw new Error("Failed to fetch schedule");
       return (await res.json()) as Schedule;
     } catch (e) {

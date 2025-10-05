@@ -125,6 +125,7 @@ function ReservationBlock({
                     color: "white",
                   },
                   "&.MuiPickersDay-today": {
+                    bgcolor: "rgba(0,0,0,0)",
                     border: "2px solid #c293bdff",
                   },
                 },

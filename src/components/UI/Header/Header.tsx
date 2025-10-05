@@ -4,12 +4,10 @@ import {
   Toolbar,
   Stack,
   Button,
-  IconButton,
   Link,
   Typography,
   useTheme,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import { sections } from "../../../constants/sections";
 import useHeader from "../../../hooks/useHeader";
 import { ReactComponent as Logo } from "../../../assets/logo/logo.svg";
