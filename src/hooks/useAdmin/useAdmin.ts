@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   loginError,
   loginSuccess,
+  setCheckingAuth,
   setPassword,
 } from "../../store/slices/adminSlice";
 import { loadBookedDates } from "../../store/slices/bookedDatesSlice";
@@ -52,6 +53,7 @@ export const useAdmin = () => {
   };
 
   useEffect(() => {
+    const start = Date.now();
     const savedPassword = localStorage.getItem("adminPassword");
     if (savedPassword) {
       dispatch(setPassword(savedPassword));
@@ -71,8 +73,14 @@ export const useAdmin = () => {
           }
         } catch {
           console.warn("Автовход не удался");
+        } finally {
+          dispatch(setCheckingAuth(false));
         }
       })();
+    } else {
+      const elapsed = Date.now() - start;
+      const delay = Math.max(500 - elapsed, 0);
+      setTimeout(() => dispatch(setCheckingAuth(false)), delay);
     }
   }, [dispatch]);
 

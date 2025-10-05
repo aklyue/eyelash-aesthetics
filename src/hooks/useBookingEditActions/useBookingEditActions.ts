@@ -97,7 +97,7 @@ export const useBookingEditActions = () => {
         setEditId(null);
         dispatch(
           setSnackbar({
-            message: "Запись редактирована",
+            message: "Запись отредактирована",
             severity: "success",
             open: true,
           })

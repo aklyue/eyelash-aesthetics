@@ -5,11 +5,14 @@ import MainPage from "./pages/MainPage";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import AnimatedUI from "./components/UI/AnimatedUI";
 import AdminPage from "./pages/AdminPage";
+import { useAppSelector } from "./store/hooks";
 
 function Router() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isTablet = useMediaQuery(theme.breakpoints.between("md", "lg"));
+  const { isCheckingAuth } = useAppSelector((state) => state.admin);
+
   return (
     <Box
       sx={{
@@ -22,9 +25,11 @@ function Router() {
         <Route path="/" element={<MainPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      <AnimatedUI isHeader={false}>
-        <Footer isMobile={isMobile} />
-      </AnimatedUI>
+      {!isCheckingAuth && (
+        <AnimatedUI isHeader={false}>
+          <Footer isMobile={isMobile} />
+        </AnimatedUI>
+      )}
     </Box>
   );
 }

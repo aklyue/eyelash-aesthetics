@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   CircularProgress,
+  IconButton,
   Snackbar,
   Tab,
   Tabs,
@@ -21,6 +22,9 @@ import "swiper/css";
 import AnimatedUI from "../UI/AnimatedUI";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { closeSnackbar } from "../../store/slices/snackbarSlice";
+
+import { Logout } from "@mui/icons-material";
+import { logout } from "../../store/slices/adminSlice";
 
 function AdminPanel() {
   const { isLoading } = useAppSelector((state) => state.loading);
@@ -154,9 +158,20 @@ function AdminPanel() {
   return (
     <AnimatedUI isHeader={false}>
       <Box sx={{ px: isMobile ? 2 : 8, py: 4 }}>
-        <Typography variant="h5" mb={3}>
-          Админ-панель
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h5" mb={3}>
+            Админ-панель
+          </Typography>
+          <IconButton onClick={() => dispatch(logout())}>
+            <Logout color="error" />
+          </IconButton>
+        </Box>
 
         <Tabs
           sx={{ "& .MuiTabs-indicator": { backgroundColor: "#ba68a9ff" } }}
@@ -181,7 +196,6 @@ function AdminPanel() {
           initialSlide={0}
           onSlideChange={(swiper: SwiperType) => setTab(swiper.activeIndex)}
           spaceBetween={16}
-          slidesPerView={1.005}
           centeredSlides={true}
           noSwipingClass="no-swipe"
         >
