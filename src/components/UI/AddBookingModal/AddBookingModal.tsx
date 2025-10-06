@@ -216,6 +216,9 @@ export const AddBookingModal = ({
                   key={s}
                   value={s}
                   sx={{
+                    "&:hover": {
+                      bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                    },
                     "&.Mui-selected": {
                       bgcolor: "#ce92d71a",
                       "&:hover": {

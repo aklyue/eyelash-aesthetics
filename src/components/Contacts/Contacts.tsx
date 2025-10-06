@@ -196,12 +196,13 @@ export default function Contacts() {
                           key={s}
                           value={s}
                           sx={{
+                            "&:hover": {
+                              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                            },
                             "&.Mui-selected": {
                               bgcolor: "#ce92d71a",
                               "&:hover": {
-                                bgcolor: isMobile
-                                  ? "#ce92d71a"
-                                  : "#ce92d738",
+                                bgcolor: isMobile ? "#ce92d71a" : "#ce92d738",
                               },
                             },
                           }}
