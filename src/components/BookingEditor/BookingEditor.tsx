@@ -64,6 +64,7 @@ export function BookingEditor() {
             sx={{
               "&:hover": {
                 color: isMobile ? undefined : "rgba(124, 167, 109, 1)",
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
               },
             }}
           >
@@ -107,6 +108,7 @@ export function BookingEditor() {
                     sx={{
                       "&:hover": {
                         color: isMobile ? undefined : "rgba(203, 83, 83, 1)",
+                        bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
                       },
                     }}
                     onClick={(e) => {
@@ -122,6 +124,7 @@ export function BookingEditor() {
                     sx={{
                       "&:hover": {
                         color: isMobile ? undefined : "rgba(83, 85, 203, 1)",
+                        bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
                       },
                     }}
                     onClick={(e) => {

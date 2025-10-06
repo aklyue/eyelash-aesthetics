@@ -21,6 +21,7 @@ import LinkSection from "../UI/LinkSection";
 import TinkoffRmPay from "../UI/TinkoffRmPay";
 import ContactsBackground from "../../assets/background/contacts-background.png";
 import { closeSnackbar } from "../../store/slices/snackbarSlice";
+import { servicelist } from "../../constants/servicelist";
 
 export interface FormData {
   name: string;
@@ -36,8 +37,7 @@ export default function Contacts() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useAppDispatch();
   const { snackbar } = useAppSelector((state) => state);
-  const { handleBooking, setPaymentFile, paymentFile } =
-    useBookingActions();
+  const { handleBooking, setPaymentFile, paymentFile } = useBookingActions();
 
   const {
     register,
@@ -83,9 +83,13 @@ export default function Contacts() {
     transition: "all 0.2s",
     boxShadow: "none",
     "&:hover": {
-      backgroundColor: isMobile ? theme.palette.background.default :"rgba(255, 255, 255, 0.2)",
+      backgroundColor: isMobile
+        ? theme.palette.background.default
+        : "rgba(255, 255, 255, 0.2)",
       color: isMobile ? theme.palette.text.primary : "rgba(95, 95, 95, 1)",
-      borderColor: isMobile ? "rgba(161, 161, 161, 0.6)" : "rgba(128, 128, 128, 0.9)",
+      borderColor: isMobile
+        ? "rgba(161, 161, 161, 0.6)"
+        : "rgba(128, 128, 128, 0.9)",
       boxShadow: "none",
     },
   };
@@ -178,8 +182,34 @@ export default function Contacts() {
                       onChange={field.onChange}
                       error={!!errors.service}
                       helperText={errors.service?.message}
+                      sx={{
+                        "& .Mui-selected": {
+                          bgcolor: "#ce92d71a",
+                          "&:hover": {
+                            bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                          },
+                        },
+                      }}
                     >
-                      <MenuItem value="Ламинирование ресниц">
+                      {servicelist.map((s) => (
+                        <MenuItem
+                          key={s}
+                          value={s}
+                          sx={{
+                            "&.Mui-selected": {
+                              bgcolor: "#ce92d71a",
+                              "&:hover": {
+                                bgcolor: isMobile
+                                  ? "rgba(0,0,0,0)"
+                                  : "#ce92d738",
+                              },
+                            },
+                          }}
+                        >
+                          {s}
+                        </MenuItem>
+                      ))}
+                      {/* <MenuItem value="Ламинирование ресниц">
                         Ламинирование ресниц
                       </MenuItem>
                       <MenuItem value="Наращивание ресниц">
@@ -191,7 +221,7 @@ export default function Contacts() {
                       <MenuItem value="Снятие ресниц">Снятие ресниц</MenuItem>
                       <MenuItem value="Коррекция ресниц">
                         Коррекция ресниц
-                      </MenuItem>
+                      </MenuItem> */}
                     </TextField>
                   )}
                 />

@@ -69,6 +69,11 @@ export function ScheduleEditor() {
           disabled={
             JSON.stringify(localSchedule) === JSON.stringify(scheduleFromRedux)
           }
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
         >
           <Save sx={{ mr: 0.5 }} />
           Сохранить
@@ -193,8 +198,25 @@ export function ScheduleEditor() {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeModal}>Отмена</Button>
-          <Button color="success" onClick={handleSave}>
+          <Button
+            onClick={closeModal}
+            sx={{
+              "&:hover": {
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+              },
+            }}
+          >
+            Отмена
+          </Button>
+          <Button
+            color="success"
+            onClick={handleSave}
+            sx={{
+              "&:hover": {
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+              },
+            }}
+          >
             Сохранить
           </Button>
         </DialogActions>

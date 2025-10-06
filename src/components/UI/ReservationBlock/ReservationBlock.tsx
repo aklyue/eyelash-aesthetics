@@ -102,7 +102,14 @@ function ReservationBlock({
             }}
             slotProps={{
               actionBar: { actions: [] },
-              calendarHeader: { disabled: true },
+              calendarHeader: {
+                disabled: true,
+                sx: {
+                  "& .MuiPickersCalendarHeader-labelContainer": {
+                    cursor: "default",
+                  },
+                },
+              },
               toolbar: {
                 sx: {
                   maxWidth: "100%",

@@ -105,6 +105,14 @@ export const EditBookingModal = ({
                     },
                   },
                 },
+                calendarHeader: {
+                  disabled: true,
+                  sx: {
+                    "& .MuiPickersCalendarHeader-labelContainer": {
+                      cursor: "default",
+                    },
+                  },
+                },
                 nextIconButton: {
                   sx: {
                     "&:hover": {
@@ -149,6 +157,50 @@ export const EditBookingModal = ({
                   },
                 },
               }}
+              views={["hours"]}
+              localeText={{
+                cancelButtonLabel: "Отмена",
+                okButtonLabel: "Применить",
+              }}
+              slotProps={{
+                popper: {
+                  sx: {
+                    "& .MuiList-root": {
+                      width: "100%",
+                    },
+                    "& .MuiMenuItem-root": {
+                      width: 100,
+                      "&:hover": {
+                        bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                      },
+                      "&.Mui-selected": {
+                        bgcolor: "#ce92d7ff !important",
+                        color: "white",
+                      },
+                    },
+                  },
+                },
+                actionBar: {
+                  actions: isMobile ? ["cancel", "accept"] : [],
+                },
+                layout: {
+                  sx: {
+                    "& .MuiClockPointer-root": {
+                      bgcolor: "#ce92d7ff",
+                    },
+                    "& .MuiClock-pin": {
+                      bgcolor: "#ce92d7ff",
+                    },
+                    "& .MuiClockPointer-thumb": {
+                      bgcolor: "#ce92d7ff",
+                      border: "16px solid #ce92d7ff",
+                    },
+                    "& .Mui-selected": {
+                      bgcolor: "#ce92d7ff",
+                    },
+                  },
+                },
+              }}
               ampm={false}
             />
             <FormControl fullWidth>
@@ -161,7 +213,18 @@ export const EditBookingModal = ({
                 }
               >
                 {servicelist.map((s) => (
-                  <MenuItem key={s} value={s}>
+                  <MenuItem
+                    key={s}
+                    value={s}
+                    sx={{
+                      "&.Mui-selected": {
+                        bgcolor: "#ce92d71a",
+                        "&:hover": {
+                          bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                        },
+                      },
+                    }}
+                  >
                     {s}
                   </MenuItem>
                 ))}
