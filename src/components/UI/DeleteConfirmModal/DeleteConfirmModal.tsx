@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogTitle,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { useAppSelector } from "../../../store/hooks";
@@ -25,6 +26,7 @@ export const DeleteConfirmModal = ({
 }: DeleteModalProps) => {
   const { isLoading } = useAppSelector((state) => state.loading);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -54,10 +56,27 @@ export const DeleteConfirmModal = ({
       </DialogContent>
 
       <DialogActions sx={{ position: "relative" }}>
-        <Button onClick={onClose} disabled={isLoading}>
+        <Button
+          onClick={onClose}
+          disabled={isLoading}
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
+        >
           Отмена
         </Button>
-        <Button color="error" onClick={onConfirm} disabled={isLoading}>
+        <Button
+          color="error"
+          onClick={onConfirm}
+          disabled={isLoading}
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
+        >
           Удалить
         </Button>
       </DialogActions>

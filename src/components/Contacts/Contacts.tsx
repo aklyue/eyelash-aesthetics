@@ -83,9 +83,9 @@ export default function Contacts() {
     transition: "all 0.2s",
     boxShadow: "none",
     "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.2)",
-      color: "rgba(95, 95, 95, 1)",
-      borderColor: "rgba(128, 128, 128, 0.9)",
+      backgroundColor: isMobile ? theme.palette.background.default :"rgba(255, 255, 255, 0.2)",
+      color: isMobile ? theme.palette.text.primary : "rgba(95, 95, 95, 1)",
+      borderColor: isMobile ? "rgba(161, 161, 161, 0.6)" : "rgba(128, 128, 128, 0.9)",
       boxShadow: "none",
     },
   };

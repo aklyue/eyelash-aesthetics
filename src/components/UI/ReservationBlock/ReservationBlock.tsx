@@ -120,6 +120,9 @@ function ReservationBlock({
                   "&.MuiPickersDay-root": {
                     fontWeight: "bold",
                   },
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                  },
                   "&.Mui-selected": {
                     bgcolor: "#ce92d7ff !important",
                     color: "white",
@@ -127,6 +130,20 @@ function ReservationBlock({
                   "&.MuiPickersDay-today": {
                     bgcolor: "rgba(0,0,0,0)",
                     border: "2px solid #c293bdff",
+                  },
+                },
+              },
+              nextIconButton: {
+                sx: {
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                  },
+                },
+              },
+              previousIconButton: {
+                sx: {
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
                   },
                 },
               },

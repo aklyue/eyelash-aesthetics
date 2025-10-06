@@ -72,6 +72,9 @@ function AdminPanel() {
                 width: 50,
                 height: 50,
                 p: 0,
+                "&:hover": {
+                  bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                },
               }}
               onClick={() => navigate("/")}
             >
@@ -216,11 +219,21 @@ function AdminPanel() {
               width: 50,
               height: 50,
               p: 0,
+              "&:hover": {
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+              },
             }}
           >
             <Logo width={40} height={40} />
           </IconButton>
-          <IconButton onClick={() => dispatch(logout())}>
+          <IconButton
+            onClick={() => dispatch(logout())}
+            sx={{
+              "&:hover": {
+                bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+              },
+            }}
+          >
             <Logout color="error" />
           </IconButton>
         </Box>

@@ -12,6 +12,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 
@@ -46,6 +47,7 @@ export const EditBookingModal = ({
 }: EditModalProps) => {
   const { isLoading } = useAppSelector((state) => state.loading);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
@@ -90,6 +92,9 @@ export const EditBookingModal = ({
                     "&.MuiPickersDay-root": {
                       fontWeight: "bold",
                     },
+                    "&:hover": {
+                      bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                    },
                     "&.Mui-selected": {
                       bgcolor: "#ce92d7ff !important",
                       color: "white",
@@ -98,6 +103,27 @@ export const EditBookingModal = ({
                       bgcolor: "rgba(0,0,0,0)",
                       border: "2px solid #c293bdff",
                     },
+                  },
+                },
+                nextIconButton: {
+                  sx: {
+                    "&:hover": {
+                      bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                    },
+                  },
+                },
+                previousIconButton: {
+                  sx: {
+                    "&:hover": {
+                      bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                    },
+                  },
+                },
+              }}
+              sx={{
+                "& .MuiButtonBase-root": {
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
                   },
                 },
               }}
@@ -116,6 +142,13 @@ export const EditBookingModal = ({
                 }
               }}
               format="HH"
+              sx={{
+                "& .MuiButtonBase-root": {
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                  },
+                },
+              }}
               ampm={false}
             />
             <FormControl fullWidth>
@@ -177,8 +210,25 @@ export const EditBookingModal = ({
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Отмена</Button>
-        <Button color="primary" onClick={onConfirm}>
+        <Button
+          onClick={onClose}
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
+        >
+          Отмена
+        </Button>
+        <Button
+          color="primary"
+          onClick={onConfirm}
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
+        >
           Сохранить
         </Button>
       </DialogActions>

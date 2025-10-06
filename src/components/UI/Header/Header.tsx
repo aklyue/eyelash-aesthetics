@@ -229,7 +229,9 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                     backgroundColor: isMobile
                       ? "rgba(255, 255, 255, 0.3)"
                       : "rgba(255, 255, 255, 0.5)",
-                    boxShadow: "0 4px 40px rgba(0, 0, 0, 0.15)",
+                    boxShadow: isMobile
+                      ? "0 4px 30px rgba(0, 0, 0, 0.1)"
+                      : "0 4px 40px rgba(0, 0, 0, 0.15)",
                   },
                 }}
               >
@@ -282,8 +284,10 @@ export default function Header({ isMobile, isTablet, headerRef }: HeaderProps) {
                       mb: 1,
                       transition: "all 0.3s ease",
                       "&:hover": {
-                        backgroundColor: "rgba(254, 211, 230, 0.8)",
-                        transform: "translateX(-6px)",
+                        backgroundColor: isMobile
+                          ? "rgba(254, 211, 230, 0.6)"
+                          : "rgba(254, 211, 230, 0.8)",
+                        transform: isMobile ? "none" : "translateX(-6px)",
                       },
                     }}
                   >

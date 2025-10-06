@@ -12,6 +12,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 
@@ -46,6 +47,7 @@ export const AddBookingModal = ({
 }: AddModalProps) => {
   const { isLoading } = useAppSelector((state) => state.loading);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
@@ -87,6 +89,9 @@ export const AddBookingModal = ({
               day: {
                 sx: {
                   "&.MuiPickersDay-root": { fontWeight: "bold" },
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                  },
                   "&.Mui-selected": {
                     bgcolor: "#ce92d7ff !important",
                     color: "white",
@@ -95,6 +100,30 @@ export const AddBookingModal = ({
                     bgcolor: "rgba(0,0,0,0)",
                     border: "2px solid #c293bdff",
                   },
+                },
+              },
+              calendarHeader: {
+                disabled: true
+              },
+              nextIconButton: {
+                sx: {
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                  },
+                },
+              },
+              previousIconButton: {
+                sx: {
+                  "&:hover": {
+                    bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                  },
+                },
+              },
+            }}
+            sx={{
+              "& .MuiButtonBase-root": {
+                "&:hover": {
+                  bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
                 },
               },
             }}
@@ -114,6 +143,13 @@ export const AddBookingModal = ({
               }
             }}
             format="HH"
+            sx={{
+              "& .MuiButtonBase-root": {
+                "&:hover": {
+                  bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+                },
+              },
+            }}
             ampm={false}
           />
 
@@ -176,8 +212,25 @@ export const AddBookingModal = ({
         )}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Отмена</Button>
-        <Button color="success" onClick={onConfirm}>
+        <Button
+          onClick={onClose}
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
+        >
+          Отмена
+        </Button>
+        <Button
+          color="success"
+          onClick={onConfirm}
+          sx={{
+            "&:hover": {
+              bgcolor: isMobile ? "rgba(0,0,0,0)" : undefined,
+            },
+          }}
+        >
           Добавить
         </Button>
       </DialogActions>

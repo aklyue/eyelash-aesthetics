@@ -7,6 +7,8 @@ import {
   IconButton,
   Snackbar,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
 import { Delete } from "@mui/icons-material";
@@ -20,6 +22,9 @@ import useBookingEditActions from "../../hooks/useBookingEditActions";
 import AddBookingModal from "../UI/AddBookingModal";
 
 export function BookingEditor() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   const {
     bookedDates,
     setDeleteId,
@@ -56,7 +61,11 @@ export function BookingEditor() {
           <IconButton
             className="no-swipe"
             onClick={handleAddOpen}
-            sx={{ "&:hover": { color: "rgba(124, 167, 109, 1)" } }}
+            sx={{
+              "&:hover": {
+                color: isMobile ? undefined : "rgba(124, 167, 109, 1)",
+              },
+            }}
           >
             <Add />
           </IconButton>
@@ -95,7 +104,11 @@ export function BookingEditor() {
                   <IconButton
                     className="no-swipe"
                     component="span"
-                    sx={{ "&:hover": { color: "rgba(203, 83, 83, 1)" } }}
+                    sx={{
+                      "&:hover": {
+                        color: isMobile ? undefined : "rgba(203, 83, 83, 1)",
+                      },
+                    }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setDeleteId(b.id);
@@ -106,7 +119,11 @@ export function BookingEditor() {
                   <IconButton
                     className="no-swipe"
                     component="span"
-                    sx={{ "&:hover": { color: "rgba(83, 85, 203, 1)" } }}
+                    sx={{
+                      "&:hover": {
+                        color: isMobile ? undefined : "rgba(83, 85, 203, 1)",
+                      },
+                    }}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleEditOpen(b);
