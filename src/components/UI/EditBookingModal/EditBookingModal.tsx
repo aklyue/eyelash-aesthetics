@@ -220,7 +220,7 @@ export const EditBookingModal = ({
                       "&.Mui-selected": {
                         bgcolor: "#ce92d71a",
                         "&:hover": {
-                          bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                          bgcolor: isMobile ? "#ce92d71a" : "#ce92d738",
                         },
                       },
                     }}

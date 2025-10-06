@@ -200,7 +200,7 @@ export default function Contacts() {
                               bgcolor: "#ce92d71a",
                               "&:hover": {
                                 bgcolor: isMobile
-                                  ? "rgba(0,0,0,0)"
+                                  ? "#ce92d71a"
                                   : "#ce92d738",
                               },
                             },
