@@ -198,7 +198,18 @@ function ReservationBlock({
               disabled={!selectedDate}
             >
               {availableSlots.map((slot) => (
-                <MenuItem key={slot} value={slot}>
+                <MenuItem
+                  key={slot}
+                  value={slot}
+                  sx={{
+                    "&.Mui-selected": {
+                      bgcolor: "#ce92d71a",
+                      "&:hover": {
+                        bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
+                      },
+                    },
+                  }}
+                >
                   {slot}
                 </MenuItem>
               ))}
