@@ -6,6 +6,8 @@ import SlideFive from "../assets/images/SliderSlides/slide-five.jpg";
 import SlideSix from "../assets/images/SliderSlides/slide-six.jpg";
 import SlideSeven from "../assets/images/SliderSlides/slide-seven.jpg";
 import SlideEight from "../assets/images/SliderSlides/slide-eight.jpg";
+import SlideNine from "../assets/images/SliderSlides/slide-nine.png";
+import SlideTen from "../assets/images/SliderSlides/slide-1-2.png";
 
 export const slides = [
   {
@@ -38,6 +40,14 @@ export const slides = [
   },
   {
     src: SlideEight,
+    text: "Седьмой слайд — начните сотрудничество сегодня",
+  },
+  {
+    src: SlideNine,
+    text: "Седьмой слайд — начните сотрудничество сегодня",
+  },
+  {
+    src: SlideTen,
     text: "Седьмой слайд — начните сотрудничество сегодня",
   },
 ];
