@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./app/App";
 import { BrowserRouter } from "react-router-dom";
-import store from "./store/store";
+import store from "./app/store/store";
 import { Provider } from "react-redux";
 import "./index.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";

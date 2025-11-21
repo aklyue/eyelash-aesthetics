@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, CircularProgress, useTheme } from "@mui/material";
-import AdminPanel from "../../components/AdminPanel";
-import AnimatedSection from "../../components/UI/AnimatedSection";
-import { useAppSelector } from "../../store/hooks";
+import AdminPanel from "../../features/admin/ui";
+import AnimatedSection from "../../shared/components/AnimatedSection";
+import { useAppSelector } from "../../app/store/hooks";
 
 function AdminPage() {
   const { isCheckingAuth } = useAppSelector((state) => state.admin);
