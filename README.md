@@ -52,12 +52,14 @@ cd eyelash-aesthetics```
 2. Устанавливаем зависимости:
 
 ```bash
-npm install```
+npm install
+```
 
 3. Запускаем проект:
 
 ```bash
-npm start```
+npm start
+```
 
 4. Открываем в браузере: http://localhost:3000
 
@@ -74,7 +76,8 @@ npm start```
   "name": "Наращивание ресниц",
   "description": "Элегантное и натуральное наращивание",
   "price": 3000
-}```
+}
+```
 
 ---
 
