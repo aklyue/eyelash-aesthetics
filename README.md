@@ -34,10 +34,100 @@
 ## 🛠 Технологии
 
 - **TypeScript** — надёжная типизация и контроль кода  
-- **React** — современный фронтенд  
+- **React** — фронтенд
+- **Redux** — современный стейт-менеджер
+- **MaterialUI** — библиотека компонентов React
+- **Framer Motion** — анимации
 - **JSON** — хранилище данных (`db.json`)  
 - **Node.js + Express** — (если есть backend)  
 - **CSS / HTML** — стилизация и структура  
+
+---
+
+## Архитектура
+
+```
+    ├───app
+    │   └───store                # Redux store проекта
+    │       └───slices           # Redux slices (состояния для разных частей приложения)
+    ├───features
+    │   ├───admin                # Фичи админки
+    │   │   ├───blocks           # Основные блоки админки
+    │   │   │   ├───components   # Компоненты внутри блоков админки
+    │   │   │   │   ├───BookingEditor      # Компонент редактирования бронирований
+    │   │   │   │   ├───ScheduleEditor     # Компонент редактирования расписания
+    │   │   │   │   └───ScheduleMobile     # Мобильная версия редактирования расписания
+    │   │   │   └───hooks        # Хуки для логики блоков админки
+    │   │   │       ├───useBookingEditActions  # Хуки действий с бронированием
+    │   │   │       └───useScheduleEditActions # Хуки действий с расписанием
+    │   │   ├───hooks            # Общие хуки для админки
+    │   │   │   └───useAdmin     # Хук с основной логикой админки
+    │   │   └───ui               # UI-компоненты админки
+    │   │       └───components
+    │   │           ├───AddBookingModal      # Модальное окно добавления бронирования
+    │   │           ├───DeleteConfirmModal   # Модальное окно подтверждения удаления
+    │   │           └───EditBookingModal     # Модальное окно редактирования бронирования
+    │   └───landing              # Фичи лендинга
+    │       ├───blocks           # Блоки лендинга
+    │       │   └───components   # Компоненты внутри блоков
+    │       │       ├───AboutCompany        # Блок "О компании"
+    │       │       ├───Benefits            # Блок с преимуществами
+    │       │       ├───ConsolidatedBlock   # Объединённый блок
+    │       │       ├───Contacts            # Контактная информация
+    │       │       ├───Faq                 # Вопрос-ответ (FAQ)
+    │       │       ├───Reviews             # Отзывы клиентов
+    │       │       ├───Schedule            # Расписание
+    │       │       ├───Services            # Список услуг
+    │       │       ├───Stats               # Статистика / цифры
+    │       │       └───Welcome             # Приветственный блок
+    │       ├───hooks            # Хуки лендинга
+    │       │   └───useBookingActions       # Хук действий с бронированиями
+    │       └───ui               # UI-компоненты лендинга
+    │           ├───components
+    │           │   ├───LinkSection         # Блок ссылок
+    │           │   ├───MenuButton          # Кнопка меню
+    │           │   ├───ReservationBlock    # Блок бронирования
+    │           │   ├───SectionNavigator    # Навигация по секциям
+    │           │   ├───SwiperSlider        # Слайдер Swiper
+    │           │   ├───TelegramIcon        # Иконка Telegram
+    │           │   ├───ThemeToggle         # Переключение темы
+    │           │   └───TinkoffRmPay        # Компонент оплаты Tinkoff RM
+    │           └───hooks
+    │               ├───usePayment          # Хук оплаты
+    │               ├───useSectionNavigation # Хук навигации по секциям
+    │               └───useSwiperSlider     # Хук для слайдера Swiper
+    ├───pages
+    │   ├───AdminPage            # Страница админки
+    │   └───MainPage             # Главная страница лендинга
+    ├───shared                   # Общие ресурсы и утилиты
+    │   ├───assets
+    │   │   ├───background       # Фоны
+    │   │   ├───images           # Изображения
+    │   │   │   ├───AboutCompanyImages  # Картинки блока "О компании"
+    │   │   │   ├───ServicesImages      # Картинки услуг
+    │   │   │   ├───SliderSlides        # Слайды для слайдера
+    │   │   │   └───WelcomeImages       # Картинки блока приветствия
+    │   │   └───logo             # Логотипы
+    │   ├───components           # Общие компоненты
+    │   │   ├───AnimatedSection   # Анимированные секции
+    │   │   ├───AnimatedUI        # Анимации для UI
+    │   │   └───CutoutButton      # Кастомная кнопка
+    │   ├───constants            # Константы проекта
+    │   ├───hooks                # Общие хуки
+    │   │   ├───useGetYears       # Хук для получения годов
+    │   │   ├───useHeader         # Логика шапки сайта
+    │   │   ├───useLoader         # Лоадер страницы
+    │   │   └───useScheduleActions # Действия с расписанием
+    │   ├───types                # Общие типы TypeScript
+    │   │   ├───email
+    │   │   ├───global
+    │   │   ├───responsive
+    │   │   └───snackbar
+    │   └───utils                # Вспомогательные функции
+    └───widgets
+        ├───Footer               # Подвал сайта
+        └───Header               # Шапка сайта
+```
 
 ---
 
