@@ -15,7 +15,9 @@
 ## 🖼 Демо / Скриншоты
 
 ![Главная страница](docs/screenshots/home.png)  
-![Список услуг](docs/screenshots/services.png)  
+![Список услуг](docs/screenshots/services.png)
+
+> *https://eyelash-aesthetics.onrender.com*
 
 ---
 
@@ -135,7 +137,8 @@
 
 ```bash
 git clone https://github.com/aklyue/eyelash-aesthetics.git
-cd eyelash-aesthetics```
+cd eyelash-aesthetics
+```
 
 2. Устанавливаем зависимости:
 
