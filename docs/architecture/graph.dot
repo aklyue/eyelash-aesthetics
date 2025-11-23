@@ -1,0 +1,491 @@
+strict digraph "dependency-cruiser output"{
+    rankdir="LR" splines="true" overlap="false" nodesep="0.16" ranksep="0.18" fontname="Helvetica-bold" fontsize="9" style="rounded,bold,filled" fillcolor="#ffffff" compound="true"
+    node [shape="box" style="rounded, filled" height="0.2" color="black" fillcolor="#ffffcc" fontcolor="black" fontname="Helvetica" fontsize="9"]
+    edge [arrowhead="normal" arrowsize="0.6" penwidth="2.0" color="#00000033" fontname="Helvetica" fontsize="9"]
+
+    subgraph "cluster_node_modules" {label="node_modules" subgraph "cluster_node_modules/@mui" {label="@mui" "node_modules/@mui/icons-material" [label=<icons-material> tooltip="icons-material" URL="https://www.npmjs.com/package/@mui/icons-material" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] } }
+    subgraph "cluster_node_modules" {label="node_modules" subgraph "cluster_node_modules/@mui" {label="@mui" "node_modules/@mui/material" [label=<material> tooltip="material" URL="https://www.npmjs.com/package/@mui/material" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] } }
+    subgraph "cluster_node_modules" {label="node_modules" subgraph "cluster_node_modules/@mui" {label="@mui" "node_modules/@mui/x-date-pickers" [label=<x-date-pickers> tooltip="x-date-pickers" URL="https://www.npmjs.com/package/@mui/x-date-pickers" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] } }
+    subgraph "cluster_node_modules" {label="node_modules" subgraph "cluster_node_modules/@reduxjs" {label="@reduxjs" "node_modules/@reduxjs/toolkit" [label=<toolkit> tooltip="toolkit" URL="https://www.npmjs.com/package/@reduxjs/toolkit" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] } }
+    subgraph "cluster_node_modules" {label="node_modules" subgraph "cluster_node_modules/@testing-library" {label="@testing-library" "node_modules/@testing-library/jest-dom" [label=<jest-dom> tooltip="jest-dom" URL="https://www.npmjs.com/package/@testing-library/jest-dom" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] } }
+    subgraph "cluster_node_modules" {label="node_modules" subgraph "cluster_node_modules/@testing-library" {label="@testing-library" "node_modules/@testing-library/react" [label=<react> tooltip="react" URL="https://www.npmjs.com/package/@testing-library/react" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] } }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/date-fns" [label=<date-fns> tooltip="date-fns" URL="https://www.npmjs.com/package/date-fns" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/framer-motion" [label=<framer-motion> tooltip="framer-motion" URL="https://www.npmjs.com/package/framer-motion" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/react" [label=<react> tooltip="react" URL="https://www.npmjs.com/package/react" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/react-dom" [label=<react-dom> tooltip="react-dom" URL="https://www.npmjs.com/package/react-dom" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/react-hook-form" [label=<react-hook-form> tooltip="react-hook-form" URL="https://www.npmjs.com/package/react-hook-form" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/react-redux" [label=<react-redux> tooltip="react-redux" URL="https://www.npmjs.com/package/react-redux" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/react-router-dom" [label=<react-router-dom> tooltip="react-router-dom" URL="https://www.npmjs.com/package/react-router-dom" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_node_modules" {label="node_modules" "node_modules/swiper" [label=<swiper> tooltip="swiper" URL="https://www.npmjs.com/package/swiper" shape="box3d" fillcolor="#c40b0a1a" fontcolor="#c40b0a"] }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" "src/app/App.test.tsx" [label=<App.test.tsx> tooltip="App.test.tsx" URL="src/app/App.test.tsx" fillcolor="#bbfeff"] } }
+    "src/app/App.test.tsx" -> "src/app/App.tsx"
+    "src/app/App.test.tsx" -> "node_modules/@testing-library/react" [penwidth="1.0"]
+    "src/app/App.test.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" "src/app/App.tsx" [label=<App.tsx> tooltip="App.tsx" URL="src/app/App.tsx" fillcolor="#bbfeff"] } }
+    "src/app/App.tsx" -> "src/app/Router.tsx"
+    "src/app/App.tsx" -> "src/app/store/hooks.ts"
+    "src/app/App.tsx" -> "src/app/store/slices/scheduleSlice.ts"
+    "src/app/App.tsx" -> "src/app/theme.ts"
+    "src/app/App.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/app/App.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" "src/app/Router.tsx" [label=<Router.tsx> tooltip="Router.tsx" URL="src/app/Router.tsx" fillcolor="#bbfeff"] } }
+    "src/app/Router.tsx" -> "src/pages/AdminPage/index.ts"
+    "src/app/Router.tsx" -> "src/pages/MainPage/index.ts"
+    "src/app/Router.tsx" -> "src/shared/components/AnimatedUI/index.ts"
+    "src/app/Router.tsx" -> "src/widgets/Footer/index.ts"
+    "src/app/Router.tsx" -> "src/app/store/hooks.ts"
+    "src/app/Router.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/app/Router.tsx" -> "node_modules/react-router-dom" [penwidth="1.0"]
+    "src/app/Router.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" "src/app/react-app-env.d.ts" [label=<react-app-env.d.ts> tooltip="react-app-env.d.ts" URL="src/app/react-app-env.d.ts" fillcolor="#ccffcc"] } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" "src/app/setupTests.ts" [label=<setupTests.ts> tooltip="setupTests.ts" URL="src/app/setupTests.ts" fillcolor="#ddfeff"] } }
+    "src/app/setupTests.ts" -> "node_modules/@testing-library/jest-dom" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" "src/app/store/hooks.ts" [label=<hooks.ts> tooltip="hooks.ts" URL="src/app/store/hooks.ts" fillcolor="#ddfeff"] } } }
+    "src/app/store/hooks.ts" -> "node_modules/react-redux" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" subgraph "cluster_src/app/store/slices" {label="slices" "src/app/store/slices/adminSlice.ts" [label=<adminSlice.ts> tooltip="adminSlice.ts" URL="src/app/store/slices/adminSlice.ts" fillcolor="#ddfeff"] } } } }
+    "src/app/store/slices/adminSlice.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" subgraph "cluster_src/app/store/slices" {label="slices" "src/app/store/slices/bookedDatesSlice.ts" [label=<bookedDatesSlice.ts> tooltip="bookedDatesSlice.ts" URL="src/app/store/slices/bookedDatesSlice.ts" fillcolor="#ddfeff"] } } } }
+    "src/app/store/slices/bookedDatesSlice.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" subgraph "cluster_src/app/store/slices" {label="slices" "src/app/store/slices/loadingSlice.ts" [label=<loadingSlice.ts> tooltip="loadingSlice.ts" URL="src/app/store/slices/loadingSlice.ts" fillcolor="#ddfeff"] } } } }
+    "src/app/store/slices/loadingSlice.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" subgraph "cluster_src/app/store/slices" {label="slices" "src/app/store/slices/scheduleSlice.ts" [label=<scheduleSlice.ts> tooltip="scheduleSlice.ts" URL="src/app/store/slices/scheduleSlice.ts" fillcolor="#ddfeff"] } } } }
+    "src/app/store/slices/scheduleSlice.ts" -> "src/shared/constants/index.ts"
+    "src/app/store/slices/scheduleSlice.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" subgraph "cluster_src/app/store/slices" {label="slices" "src/app/store/slices/snackbarSlice.ts" [label=<snackbarSlice.ts> tooltip="snackbarSlice.ts" URL="src/app/store/slices/snackbarSlice.ts" fillcolor="#ddfeff"] } } } }
+    "src/app/store/slices/snackbarSlice.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" subgraph "cluster_src/app/store/slices" {label="slices" "src/app/store/slices/themeSlice.ts" [label=<themeSlice.ts> tooltip="themeSlice.ts" URL="src/app/store/slices/themeSlice.ts" fillcolor="#ddfeff"] } } } }
+    "src/app/store/slices/themeSlice.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" subgraph "cluster_src/app/store" {label="store" "src/app/store/store.ts" [label=<store.ts> tooltip="store.ts" URL="src/app/store/store.ts" fillcolor="#ddfeff"] } } }
+    "src/app/store/store.ts" -> "src/app/store/slices/adminSlice.ts"
+    "src/app/store/store.ts" -> "src/app/store/slices/bookedDatesSlice.ts"
+    "src/app/store/store.ts" -> "src/app/store/slices/loadingSlice.ts"
+    "src/app/store/store.ts" -> "src/app/store/slices/scheduleSlice.ts"
+    "src/app/store/store.ts" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/app/store/store.ts" -> "src/app/store/slices/themeSlice.ts"
+    "src/app/store/store.ts" -> "node_modules/@reduxjs/toolkit" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/app" {label="app" "src/app/theme.ts" [label=<theme.ts> tooltip="theme.ts" URL="src/app/theme.ts" fillcolor="#ddfeff"] } }
+    "src/app/theme.ts" -> "src/shared/constants/typography.ts"
+    "src/app/theme.ts" -> "node_modules/@mui/material" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/components" {label="components" subgraph "cluster_src/features/admin/blocks/components/BookingEditor" {label="BookingEditor" "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" [label=<BookingEditor.tsx> tooltip="BookingEditor.tsx" URL="src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "src/features/admin/ui/components/AddBookingModal/index.ts"
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "src/features/admin/ui/components/DeleteConfirmModal/index.ts"
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "src/features/admin/ui/components/EditBookingModal/index.ts"
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "src/features/admin/blocks/hooks/index.ts"
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "node_modules/react-router-dom" [penwidth="1.0"]
+    "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/components" {label="components" subgraph "cluster_src/features/admin/blocks/components/BookingEditor" {label="BookingEditor" "src/features/admin/blocks/components/BookingEditor/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/blocks/components/BookingEditor/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/blocks/components/BookingEditor/index.ts" -> "src/features/admin/blocks/components/BookingEditor/BookingEditor.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/components" {label="components" subgraph "cluster_src/features/admin/blocks/components/ScheduleEditor" {label="ScheduleEditor" "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" [label=<ScheduleEditor.tsx> tooltip="ScheduleEditor.tsx" URL="src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" -> "src/app/store/hooks.ts"
+    "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" -> "src/shared/constants/index.ts"
+    "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" -> "src/features/admin/blocks/hooks/index.ts"
+    "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/components" {label="components" subgraph "cluster_src/features/admin/blocks/components/ScheduleEditor" {label="ScheduleEditor" "src/features/admin/blocks/components/ScheduleEditor/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/blocks/components/ScheduleEditor/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/blocks/components/ScheduleEditor/index.ts" -> "src/features/admin/blocks/components/ScheduleEditor/ScheduleEditor.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/components" {label="components" subgraph "cluster_src/features/admin/blocks/components/ScheduleMobile" {label="ScheduleMobile" "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" [label=<ScheduleMobile.tsx> tooltip="ScheduleMobile.tsx" URL="src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "src/shared/constants/index.ts"
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "src/shared/hooks/index.ts"
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "node_modules/react" [penwidth="1.0"]
+    "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx" -> "node_modules/swiper" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/components" {label="components" subgraph "cluster_src/features/admin/blocks/components/ScheduleMobile" {label="ScheduleMobile" "src/features/admin/blocks/components/ScheduleMobile/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/blocks/components/ScheduleMobile/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/blocks/components/ScheduleMobile/index.ts" -> "src/features/admin/blocks/components/ScheduleMobile/ScheduleMobile.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/hooks" {label="hooks" "src/features/admin/blocks/hooks/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/blocks/hooks/index.ts" fillcolor="#ddfeff"] } } } } }
+    "src/features/admin/blocks/hooks/index.ts" -> "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" [arrowhead="inv"]
+    "src/features/admin/blocks/hooks/index.ts" -> "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/hooks" {label="hooks" subgraph "cluster_src/features/admin/blocks/hooks/useBookingEditActions" {label="useBookingEditActions" "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" [label=<useBookingEditActions.ts> tooltip="useBookingEditActions.ts" URL="src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" -> "src/app/store/hooks.ts"
+    "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" -> "src/app/store/slices/bookedDatesSlice.ts"
+    "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" -> "src/app/store/slices/loadingSlice.ts"
+    "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/admin/blocks/hooks/useBookingEditActions/useBookingEditActions.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/blocks" {label="blocks" subgraph "cluster_src/features/admin/blocks/hooks" {label="hooks" subgraph "cluster_src/features/admin/blocks/hooks/useScheduleEditActions" {label="useScheduleEditActions" "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" [label=<useScheduleEditActions.ts> tooltip="useScheduleEditActions.ts" URL="src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" -> "src/app/store/hooks.ts"
+    "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" -> "src/app/store/slices/loadingSlice.ts"
+    "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" -> "src/app/store/slices/scheduleSlice.ts"
+    "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" -> "src/shared/constants/index.ts"
+    "src/features/admin/blocks/hooks/useScheduleEditActions/useScheduleEditActions.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/hooks" {label="hooks" "src/features/admin/hooks/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/hooks/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/features/admin/hooks/index.ts" -> "src/features/admin/hooks/useAdmin/useAdmin.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/hooks" {label="hooks" subgraph "cluster_src/features/admin/hooks/useAdmin" {label="useAdmin" "src/features/admin/hooks/useAdmin/useAdmin.ts" [label=<useAdmin.ts> tooltip="useAdmin.ts" URL="src/features/admin/hooks/useAdmin/useAdmin.ts" fillcolor="#ddfeff"] } } } } }
+    "src/features/admin/hooks/useAdmin/useAdmin.ts" -> "src/app/store/hooks.ts"
+    "src/features/admin/hooks/useAdmin/useAdmin.ts" -> "src/app/store/slices/adminSlice.ts"
+    "src/features/admin/hooks/useAdmin/useAdmin.ts" -> "src/app/store/slices/bookedDatesSlice.ts"
+    "src/features/admin/hooks/useAdmin/useAdmin.ts" -> "src/app/store/slices/loadingSlice.ts"
+    "src/features/admin/hooks/useAdmin/useAdmin.ts" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/admin/hooks/useAdmin/useAdmin.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" "src/features/admin/ui/AdminPanel.tsx" [label=<AdminPanel.tsx> tooltip="AdminPanel.tsx" URL="src/features/admin/ui/AdminPanel.tsx" fillcolor="#bbfeff"] } } } }
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/app/store/hooks.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/app/store/slices/adminSlice.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/shared/assets/logo/logo.svg"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/shared/components/AnimatedUI/index.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/features/admin/blocks/components/BookingEditor/index.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/features/admin/blocks/components/ScheduleEditor/index.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "src/features/admin/hooks/index.ts"
+    "src/features/admin/ui/AdminPanel.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/admin/ui/AdminPanel.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/ui/AdminPanel.tsx" -> "node_modules/react" [penwidth="1.0"]
+    "src/features/admin/ui/AdminPanel.tsx" -> "node_modules/react-router-dom" [penwidth="1.0"]
+    "src/features/admin/ui/AdminPanel.tsx" -> "node_modules/swiper" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" subgraph "cluster_src/features/admin/ui/components" {label="components" subgraph "cluster_src/features/admin/ui/components/AddBookingModal" {label="AddBookingModal" "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" [label=<AddBookingModal.tsx> tooltip="AddBookingModal.tsx" URL="src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" -> "src/app/store/hooks.ts"
+    "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" -> "src/shared/constants/index.ts"
+    "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" -> "node_modules/@mui/x-date-pickers" [penwidth="1.0"]
+    "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" -> "node_modules/date-fns" [penwidth="1.0"]
+    "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" subgraph "cluster_src/features/admin/ui/components" {label="components" subgraph "cluster_src/features/admin/ui/components/AddBookingModal" {label="AddBookingModal" "src/features/admin/ui/components/AddBookingModal/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/ui/components/AddBookingModal/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/ui/components/AddBookingModal/index.ts" -> "src/features/admin/ui/components/AddBookingModal/AddBookingModal.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" subgraph "cluster_src/features/admin/ui/components" {label="components" subgraph "cluster_src/features/admin/ui/components/DeleteConfirmModal" {label="DeleteConfirmModal" "src/features/admin/ui/components/DeleteConfirmModal/DeleteConfirmModal.tsx" [label=<DeleteConfirmModal.tsx> tooltip="DeleteConfirmModal.tsx" URL="src/features/admin/ui/components/DeleteConfirmModal/DeleteConfirmModal.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/admin/ui/components/DeleteConfirmModal/DeleteConfirmModal.tsx" -> "src/app/store/hooks.ts"
+    "src/features/admin/ui/components/DeleteConfirmModal/DeleteConfirmModal.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/ui/components/DeleteConfirmModal/DeleteConfirmModal.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" subgraph "cluster_src/features/admin/ui/components" {label="components" subgraph "cluster_src/features/admin/ui/components/DeleteConfirmModal" {label="DeleteConfirmModal" "src/features/admin/ui/components/DeleteConfirmModal/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/ui/components/DeleteConfirmModal/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/ui/components/DeleteConfirmModal/index.ts" -> "src/features/admin/ui/components/DeleteConfirmModal/DeleteConfirmModal.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" subgraph "cluster_src/features/admin/ui/components" {label="components" subgraph "cluster_src/features/admin/ui/components/EditBookingModal" {label="EditBookingModal" "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" [label=<EditBookingModal.tsx> tooltip="EditBookingModal.tsx" URL="src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" -> "src/app/store/hooks.ts"
+    "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" -> "src/shared/constants/index.ts"
+    "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" -> "node_modules/@mui/x-date-pickers" [penwidth="1.0"]
+    "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" -> "node_modules/date-fns" [penwidth="1.0"]
+    "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" subgraph "cluster_src/features/admin/ui/components" {label="components" subgraph "cluster_src/features/admin/ui/components/EditBookingModal" {label="EditBookingModal" "src/features/admin/ui/components/EditBookingModal/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/ui/components/EditBookingModal/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/admin/ui/components/EditBookingModal/index.ts" -> "src/features/admin/ui/components/EditBookingModal/EditBookingModal.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/admin" {label="admin" subgraph "cluster_src/features/admin/ui" {label="ui" "src/features/admin/ui/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/admin/ui/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/features/admin/ui/index.ts" -> "src/features/admin/ui/AdminPanel.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/AboutCompany" {label="AboutCompany" "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" [label=<AboutCompany.tsx> tooltip="AboutCompany.tsx" URL="src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" -> "src/shared/assets/images/AboutCompanyImages/about.jpg"
+    "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/AboutCompany" {label="AboutCompany" "src/features/landing/blocks/components/AboutCompany/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/AboutCompany/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/AboutCompany/index.ts" -> "src/features/landing/blocks/components/AboutCompany/AboutCompany.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Benefits" {label="Benefits" "src/features/landing/blocks/components/Benefits/Benefits.tsx" [label=<Benefits.tsx> tooltip="Benefits.tsx" URL="src/features/landing/blocks/components/Benefits/Benefits.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Benefits/Benefits.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/Benefits/Benefits.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Benefits/Benefits.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Benefits" {label="Benefits" "src/features/landing/blocks/components/Benefits/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Benefits/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Benefits/index.ts" -> "src/features/landing/blocks/components/Benefits/Benefits.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/ConsolidatedBlock" {label="ConsolidatedBlock" "src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx" [label=<ConsolidatedBlock.tsx> tooltip="ConsolidatedBlock.tsx" URL="src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx" -> "src/features/landing/blocks/components/Faq/index.ts"
+    "src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx" -> "src/features/landing/blocks/components/Welcome/index.ts"
+    "src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/ConsolidatedBlock" {label="ConsolidatedBlock" "src/features/landing/blocks/components/ConsolidatedBlock/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/ConsolidatedBlock/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/ConsolidatedBlock/index.ts" -> "src/features/landing/blocks/components/ConsolidatedBlock/ConsolidatedBlock.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Contacts" {label="Contacts" "src/features/landing/blocks/components/Contacts/Contacts.tsx" [label=<Contacts.tsx> tooltip="Contacts.tsx" URL="src/features/landing/blocks/components/Contacts/Contacts.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/app/store/hooks.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/app/store/slices/bookedDatesSlice.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/shared/assets/background/contacts-background.png"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/features/landing/hooks/index.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/features/landing/ui/components/LinkSection/index.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/features/landing/ui/components/ReservationBlock/index.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "src/features/landing/ui/components/TinkoffRmPay/index.ts"
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "node_modules/react" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Contacts/Contacts.tsx" -> "node_modules/react-hook-form" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Contacts" {label="Contacts" "src/features/landing/blocks/components/Contacts/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Contacts/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Contacts/index.ts" -> "src/features/landing/blocks/components/Contacts/Contacts.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Faq" {label="Faq" "src/features/landing/blocks/components/Faq/Faq.tsx" [label=<Faq.tsx> tooltip="Faq.tsx" URL="src/features/landing/blocks/components/Faq/Faq.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Faq/Faq.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/Faq/Faq.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Faq/Faq.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Faq/Faq.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Faq/Faq.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Faq" {label="Faq" "src/features/landing/blocks/components/Faq/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Faq/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Faq/index.ts" -> "src/features/landing/blocks/components/Faq/Faq.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Reviews" {label="Reviews" "src/features/landing/blocks/components/Reviews/Reviews.tsx" [label=<Reviews.tsx> tooltip="Reviews.tsx" URL="src/features/landing/blocks/components/Reviews/Reviews.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Reviews/Reviews.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/Reviews/Reviews.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Reviews/Reviews.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Reviews/Reviews.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Reviews" {label="Reviews" "src/features/landing/blocks/components/Reviews/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Reviews/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Reviews/index.ts" -> "src/features/landing/blocks/components/Reviews/Reviews.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Schedule" {label="Schedule" "src/features/landing/blocks/components/Schedule/Schedule.tsx" [label=<Schedule.tsx> tooltip="Schedule.tsx" URL="src/features/landing/blocks/components/Schedule/Schedule.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "src/app/store/hooks.ts"
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "src/shared/hooks/index.ts"
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Schedule/Schedule.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Schedule" {label="Schedule" "src/features/landing/blocks/components/Schedule/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Schedule/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Schedule/index.ts" -> "src/features/landing/blocks/components/Schedule/Schedule.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Services" {label="Services" "src/features/landing/blocks/components/Services/Services.tsx" [label=<Services.tsx> tooltip="Services.tsx" URL="src/features/landing/blocks/components/Services/Services.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Services/Services.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/blocks/components/Services/Services.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Services/Services.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Services/Services.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Services/Services.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Services" {label="Services" "src/features/landing/blocks/components/Services/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Services/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Services/index.ts" -> "src/features/landing/blocks/components/Services/Services.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Stats" {label="Stats" "src/features/landing/blocks/components/Stats/Stats.tsx" [label=<Stats.tsx> tooltip="Stats.tsx" URL="src/features/landing/blocks/components/Stats/Stats.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Stats/Stats.tsx" -> "src/features/landing/ui/components/SwiperSlider/index.ts"
+    "src/features/landing/blocks/components/Stats/Stats.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Stats/Stats.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Stats" {label="Stats" "src/features/landing/blocks/components/Stats/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Stats/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Stats/index.ts" -> "src/features/landing/blocks/components/Stats/Stats.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Welcome" {label="Welcome" "src/features/landing/blocks/components/Welcome/Welcome.tsx" [label=<Welcome.tsx> tooltip="Welcome.tsx" URL="src/features/landing/blocks/components/Welcome/Welcome.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/blocks/components/Welcome/Welcome.tsx" -> "src/shared/assets/images/WelcomeImages/welcome.jpg"
+    "src/features/landing/blocks/components/Welcome/Welcome.tsx" -> "src/shared/hooks/index.ts"
+    "src/features/landing/blocks/components/Welcome/Welcome.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/blocks/components/Welcome/Welcome.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" subgraph "cluster_src/features/landing/blocks/components" {label="components" subgraph "cluster_src/features/landing/blocks/components/Welcome" {label="Welcome" "src/features/landing/blocks/components/Welcome/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/components/Welcome/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/blocks/components/Welcome/index.ts" -> "src/features/landing/blocks/components/Welcome/Welcome.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/blocks" {label="blocks" "src/features/landing/blocks/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/blocks/index.ts" fillcolor="#ddfeff"] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/hooks" {label="hooks" "src/features/landing/hooks/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/hooks/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/features/landing/hooks/index.ts" -> "src/features/landing/hooks/useBookingActions/useBookingActions.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/hooks" {label="hooks" subgraph "cluster_src/features/landing/hooks/useBookingActions" {label="useBookingActions" "src/features/landing/hooks/useBookingActions/useBookingActions.ts" [label=<useBookingActions.ts> tooltip="useBookingActions.ts" URL="src/features/landing/hooks/useBookingActions/useBookingActions.ts" fillcolor="#ddfeff"] } } } } }
+    "src/features/landing/hooks/useBookingActions/useBookingActions.ts" -> "src/app/store/hooks.ts"
+    "src/features/landing/hooks/useBookingActions/useBookingActions.ts" -> "src/app/store/slices/bookedDatesSlice.ts"
+    "src/features/landing/hooks/useBookingActions/useBookingActions.ts" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/landing/hooks/useBookingActions/useBookingActions.ts" -> "src/shared/utils/getRuleForDate.ts"
+    "src/features/landing/hooks/useBookingActions/useBookingActions.ts" -> "node_modules/date-fns" [penwidth="1.0"]
+    "src/features/landing/hooks/useBookingActions/useBookingActions.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" "src/features/landing/ui/Landing.tsx" [label=<Landing.tsx> tooltip="Landing.tsx" URL="src/features/landing/ui/Landing.tsx" fillcolor="#bbfeff"] } } } }
+    "src/features/landing/ui/Landing.tsx" -> "src/shared/components/AnimatedSection/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/shared/components/AnimatedUI/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/shared/hooks/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/widgets/Header/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/admin/blocks/components/ScheduleMobile/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/blocks/components/Contacts/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/blocks/components/Faq/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/blocks/components/Schedule/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/blocks/components/Services/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/blocks/components/Stats/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/blocks/components/Welcome/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "src/features/landing/ui/components/SectionNavigator/index.ts"
+    "src/features/landing/ui/Landing.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/Landing.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/LinkSection" {label="LinkSection" "src/features/landing/ui/components/LinkSection/LinkSection.tsx" [label=<LinkSection.tsx> tooltip="LinkSection.tsx" URL="src/features/landing/ui/components/LinkSection/LinkSection.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/LinkSection/LinkSection.tsx" -> "src/features/landing/ui/components/TelegramIcon/index.ts"
+    "src/features/landing/ui/components/LinkSection/LinkSection.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/ui/components/LinkSection/LinkSection.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/LinkSection/LinkSection.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/LinkSection" {label="LinkSection" "src/features/landing/ui/components/LinkSection/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/LinkSection/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/LinkSection/index.ts" -> "src/features/landing/ui/components/LinkSection/LinkSection.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/MenuButton" {label="MenuButton" "src/features/landing/ui/components/MenuButton/MenuButton.tsx" [label=<MenuButton.tsx> tooltip="MenuButton.tsx" URL="src/features/landing/ui/components/MenuButton/MenuButton.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/MenuButton/MenuButton.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/MenuButton/MenuButton.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/features/landing/ui/components/MenuButton/MenuButton.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/MenuButton" {label="MenuButton" "src/features/landing/ui/components/MenuButton/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/MenuButton/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/MenuButton/index.ts" -> "src/features/landing/ui/components/MenuButton/MenuButton.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/ReservationBlock" {label="ReservationBlock" "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" [label=<ReservationBlock.tsx> tooltip="ReservationBlock.tsx" URL="src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "src/app/store/hooks.ts"
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "src/shared/utils/getRuleForDate.ts"
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "src/features/landing/hooks/index.ts"
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "node_modules/@mui/x-date-pickers" [penwidth="1.0"]
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "node_modules/date-fns" [penwidth="1.0"]
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "node_modules/react" [penwidth="1.0"]
+    "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx" -> "node_modules/react-hook-form" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/ReservationBlock" {label="ReservationBlock" "src/features/landing/ui/components/ReservationBlock/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/ReservationBlock/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/ReservationBlock/index.ts" -> "src/features/landing/ui/components/ReservationBlock/ReservationBlock.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/SectionNavigator" {label="SectionNavigator" "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" [label=<SectionNavigator.tsx> tooltip="SectionNavigator.tsx" URL="src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" -> "src/features/landing/ui/hooks/index.ts"
+    "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/SectionNavigator" {label="SectionNavigator" "src/features/landing/ui/components/SectionNavigator/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/SectionNavigator/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/SectionNavigator/index.ts" -> "src/features/landing/ui/components/SectionNavigator/SectionNavigator.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/SwiperSlider" {label="SwiperSlider" "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" [label=<SwiperSlider.tsx> tooltip="SwiperSlider.tsx" URL="src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" -> "src/shared/constants/index.ts"
+    "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" -> "src/features/landing/ui/hooks/index.ts"
+    "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" -> "node_modules/react" [penwidth="1.0"]
+    "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx" -> "node_modules/swiper" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/SwiperSlider" {label="SwiperSlider" "src/features/landing/ui/components/SwiperSlider/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/SwiperSlider/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/SwiperSlider/index.ts" -> "src/features/landing/ui/components/SwiperSlider/SwiperSlider.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/TelegramIcon" {label="TelegramIcon" "src/features/landing/ui/components/TelegramIcon/TelegramIcon.tsx" [label=<TelegramIcon.tsx> tooltip="TelegramIcon.tsx" URL="src/features/landing/ui/components/TelegramIcon/TelegramIcon.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/TelegramIcon/TelegramIcon.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/TelegramIcon/TelegramIcon.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/TelegramIcon" {label="TelegramIcon" "src/features/landing/ui/components/TelegramIcon/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/TelegramIcon/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/TelegramIcon/index.ts" -> "src/features/landing/ui/components/TelegramIcon/TelegramIcon.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/ThemeToggle" {label="ThemeToggle" "src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx" [label=<ThemeToggle.tsx> tooltip="ThemeToggle.tsx" URL="src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx" -> "src/app/store/hooks.ts"
+    "src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx" -> "src/app/store/slices/themeSlice.ts"
+    "src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/ThemeToggle" {label="ThemeToggle" "src/features/landing/ui/components/ThemeToggle/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/ThemeToggle/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/ThemeToggle/index.ts" -> "src/features/landing/ui/components/ThemeToggle/ThemeToggle.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/TinkoffRmPay" {label="TinkoffRmPay" "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" [label=<TinkoffRmPay.tsx> tooltip="TinkoffRmPay.tsx" URL="src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" fillcolor="#bbfeff"] } } } } } }
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "src/app/store/hooks.ts"
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "src/shared/assets/logo/tbank-logo.svg"
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "src/features/landing/ui/hooks/index.ts"
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/components" {label="components" subgraph "cluster_src/features/landing/ui/components/TinkoffRmPay" {label="TinkoffRmPay" "src/features/landing/ui/components/TinkoffRmPay/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/components/TinkoffRmPay/index.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/components/TinkoffRmPay/index.ts" -> "src/features/landing/ui/components/TinkoffRmPay/TinkoffRmPay.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/hooks" {label="hooks" "src/features/landing/ui/hooks/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/hooks/index.ts" fillcolor="#ddfeff"] } } } } }
+    "src/features/landing/ui/hooks/index.ts" -> "src/features/landing/ui/hooks/usePayment/usePayment.ts" [arrowhead="inv"]
+    "src/features/landing/ui/hooks/index.ts" -> "src/features/landing/ui/hooks/useSectionNavigation/useSectionNavigation.ts" [arrowhead="inv"]
+    "src/features/landing/ui/hooks/index.ts" -> "src/features/landing/ui/hooks/useSwiperSlider/useSwiperSlider.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/hooks" {label="hooks" subgraph "cluster_src/features/landing/ui/hooks/usePayment" {label="usePayment" "src/features/landing/ui/hooks/usePayment/usePayment.ts" [label=<usePayment.ts> tooltip="usePayment.ts" URL="src/features/landing/ui/hooks/usePayment/usePayment.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/hooks/usePayment/usePayment.ts" -> "src/app/store/hooks.ts"
+    "src/features/landing/ui/hooks/usePayment/usePayment.ts" -> "src/app/store/slices/snackbarSlice.ts"
+    "src/features/landing/ui/hooks/usePayment/usePayment.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/hooks" {label="hooks" subgraph "cluster_src/features/landing/ui/hooks/useSectionNavigation" {label="useSectionNavigation" "src/features/landing/ui/hooks/useSectionNavigation/useSectionNavigation.ts" [label=<useSectionNavigation.ts> tooltip="useSectionNavigation.ts" URL="src/features/landing/ui/hooks/useSectionNavigation/useSectionNavigation.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/hooks/useSectionNavigation/useSectionNavigation.ts" -> "src/shared/constants/index.ts"
+    "src/features/landing/ui/hooks/useSectionNavigation/useSectionNavigation.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" subgraph "cluster_src/features/landing/ui/hooks" {label="hooks" subgraph "cluster_src/features/landing/ui/hooks/useSwiperSlider" {label="useSwiperSlider" "src/features/landing/ui/hooks/useSwiperSlider/useSwiperSlider.ts" [label=<useSwiperSlider.ts> tooltip="useSwiperSlider.ts" URL="src/features/landing/ui/hooks/useSwiperSlider/useSwiperSlider.ts" fillcolor="#ddfeff"] } } } } } }
+    "src/features/landing/ui/hooks/useSwiperSlider/useSwiperSlider.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/features" {label="features" subgraph "cluster_src/features/landing" {label="landing" subgraph "cluster_src/features/landing/ui" {label="ui" "src/features/landing/ui/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/features/landing/ui/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/features/landing/ui/index.ts" -> "src/features/landing/ui/Landing.tsx"
+    subgraph "cluster_src" {label="src" "src/index.css" [label=<index.css> tooltip="index.css" URL="src/index.css" ] }
+    subgraph "cluster_src" {label="src" "src/index.tsx" [label=<index.tsx> tooltip="index.tsx" URL="src/index.tsx" fillcolor="#bbfeff"] }
+    "src/index.tsx" -> "src/app/App.tsx"
+    "src/index.tsx" -> "src/app/store/store.ts"
+    "src/index.tsx" -> "src/index.css"
+    "src/index.tsx" -> "node_modules/@mui/x-date-pickers" [penwidth="1.0"]
+    "src/index.tsx" -> "node_modules/date-fns" [penwidth="1.0"]
+    "src/index.tsx" -> "node_modules/react-dom" [penwidth="1.0"]
+    "src/index.tsx" -> "node_modules/react-redux" [penwidth="1.0"]
+    "src/index.tsx" -> "node_modules/react-router-dom" [penwidth="1.0"]
+    "src/index.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/pages" {label="pages" subgraph "cluster_src/pages/AdminPage" {label="AdminPage" "src/pages/AdminPage/AdminPage.tsx" [label=<AdminPage.tsx> tooltip="AdminPage.tsx" URL="src/pages/AdminPage/AdminPage.tsx" fillcolor="#bbfeff"] } } }
+    "src/pages/AdminPage/AdminPage.tsx" -> "src/app/store/hooks.ts"
+    "src/pages/AdminPage/AdminPage.tsx" -> "src/features/admin/ui/index.ts"
+    "src/pages/AdminPage/AdminPage.tsx" -> "src/shared/components/AnimatedSection/index.ts"
+    "src/pages/AdminPage/AdminPage.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/pages/AdminPage/AdminPage.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/pages" {label="pages" subgraph "cluster_src/pages/AdminPage" {label="AdminPage" "src/pages/AdminPage/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/pages/AdminPage/index.ts" fillcolor="#ddfeff"] } } }
+    "src/pages/AdminPage/index.ts" -> "src/pages/AdminPage/AdminPage.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/pages" {label="pages" subgraph "cluster_src/pages/MainPage" {label="MainPage" "src/pages/MainPage/MainPage.tsx" [label=<MainPage.tsx> tooltip="MainPage.tsx" URL="src/pages/MainPage/MainPage.tsx" fillcolor="#bbfeff"] } } }
+    "src/pages/MainPage/MainPage.tsx" -> "src/features/landing/ui/index.ts"
+    "src/pages/MainPage/MainPage.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/pages" {label="pages" subgraph "cluster_src/pages/MainPage" {label="MainPage" "src/pages/MainPage/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/pages/MainPage/index.ts" fillcolor="#ddfeff"] } } }
+    "src/pages/MainPage/index.ts" -> "src/pages/MainPage/MainPage.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/background" {label="background" "src/shared/assets/background/contacts-background.png" [label=<contacts-background.png> tooltip="contacts-background.png" URL="src/shared/assets/background/contacts-background.png" ] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/background" {label="background" "src/shared/assets/background/header2.jpg" [label=<header2.jpg> tooltip="header2.jpg" URL="src/shared/assets/background/header2.jpg" ] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/AboutCompanyImages" {label="AboutCompanyImages" "src/shared/assets/images/AboutCompanyImages/about.jpg" [label=<about.jpg> tooltip="about.jpg" URL="src/shared/assets/images/AboutCompanyImages/about.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-1-2.png" [label=<slide-1-2.png> tooltip="slide-1-2.png" URL="src/shared/assets/images/SliderSlides/slide-1-2.png" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-eight.jpg" [label=<slide-eight.jpg> tooltip="slide-eight.jpg" URL="src/shared/assets/images/SliderSlides/slide-eight.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-five.jpg" [label=<slide-five.jpg> tooltip="slide-five.jpg" URL="src/shared/assets/images/SliderSlides/slide-five.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-four.jpg" [label=<slide-four.jpg> tooltip="slide-four.jpg" URL="src/shared/assets/images/SliderSlides/slide-four.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-nine.png" [label=<slide-nine.png> tooltip="slide-nine.png" URL="src/shared/assets/images/SliderSlides/slide-nine.png" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-one.jpg" [label=<slide-one.jpg> tooltip="slide-one.jpg" URL="src/shared/assets/images/SliderSlides/slide-one.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-seven.jpg" [label=<slide-seven.jpg> tooltip="slide-seven.jpg" URL="src/shared/assets/images/SliderSlides/slide-seven.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-six.jpg" [label=<slide-six.jpg> tooltip="slide-six.jpg" URL="src/shared/assets/images/SliderSlides/slide-six.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-three.jpg" [label=<slide-three.jpg> tooltip="slide-three.jpg" URL="src/shared/assets/images/SliderSlides/slide-three.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/SliderSlides" {label="SliderSlides" "src/shared/assets/images/SliderSlides/slide-two.jpg" [label=<slide-two.jpg> tooltip="slide-two.jpg" URL="src/shared/assets/images/SliderSlides/slide-two.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/images" {label="images" subgraph "cluster_src/shared/assets/images/WelcomeImages" {label="WelcomeImages" "src/shared/assets/images/WelcomeImages/welcome.jpg" [label=<welcome.jpg> tooltip="welcome.jpg" URL="src/shared/assets/images/WelcomeImages/welcome.jpg" ] } } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/logo" {label="logo" "src/shared/assets/logo/logo.svg" [label=<logo.svg> tooltip="logo.svg" URL="src/shared/assets/logo/logo.svg" ] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/assets" {label="assets" subgraph "cluster_src/shared/assets/logo" {label="logo" "src/shared/assets/logo/tbank-logo.svg" [label=<tbank-logo.svg> tooltip="tbank-logo.svg" URL="src/shared/assets/logo/tbank-logo.svg" ] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/components" {label="components" subgraph "cluster_src/shared/components/AnimatedSection" {label="AnimatedSection" "src/shared/components/AnimatedSection/AnimatedSection.tsx" [label=<AnimatedSection.tsx> tooltip="AnimatedSection.tsx" URL="src/shared/components/AnimatedSection/AnimatedSection.tsx" fillcolor="#bbfeff"] } } } }
+    "src/shared/components/AnimatedSection/AnimatedSection.tsx" -> "src/shared/constants/index.ts"
+    "src/shared/components/AnimatedSection/AnimatedSection.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/shared/components/AnimatedSection/AnimatedSection.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/components" {label="components" subgraph "cluster_src/shared/components/AnimatedSection" {label="AnimatedSection" "src/shared/components/AnimatedSection/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/shared/components/AnimatedSection/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/shared/components/AnimatedSection/index.ts" -> "src/shared/components/AnimatedSection/AnimatedSection.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/components" {label="components" subgraph "cluster_src/shared/components/AnimatedUI" {label="AnimatedUI" "src/shared/components/AnimatedUI/AnimatedUI.tsx" [label=<AnimatedUI.tsx> tooltip="AnimatedUI.tsx" URL="src/shared/components/AnimatedUI/AnimatedUI.tsx" fillcolor="#bbfeff"] } } } }
+    "src/shared/components/AnimatedUI/AnimatedUI.tsx" -> "src/shared/constants/index.ts"
+    "src/shared/components/AnimatedUI/AnimatedUI.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/shared/components/AnimatedUI/AnimatedUI.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/components" {label="components" subgraph "cluster_src/shared/components/AnimatedUI" {label="AnimatedUI" "src/shared/components/AnimatedUI/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/shared/components/AnimatedUI/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/shared/components/AnimatedUI/index.ts" -> "src/shared/components/AnimatedUI/AnimatedUI.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/components" {label="components" subgraph "cluster_src/shared/components/CutoutButton" {label="CutoutButton" "src/shared/components/CutoutButton/CutoutButton.tsx" [label=<CutoutButton.tsx> tooltip="CutoutButton.tsx" URL="src/shared/components/CutoutButton/CutoutButton.tsx" fillcolor="#bbfeff"] } } } }
+    "src/shared/components/CutoutButton/CutoutButton.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/shared/components/CutoutButton/CutoutButton.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/components" {label="components" subgraph "cluster_src/shared/components/CutoutButton" {label="CutoutButton" "src/shared/components/CutoutButton/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/shared/components/CutoutButton/index.ts" fillcolor="#ddfeff"] } } } }
+    "src/shared/components/CutoutButton/index.ts" -> "src/shared/components/CutoutButton/CutoutButton.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/animation.ts" [label=<animation.ts> tooltip="animation.ts" URL="src/shared/constants/animation.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/benefits.tsx" [label=<benefits.tsx> tooltip="benefits.tsx" URL="src/shared/constants/benefits.tsx" fillcolor="#bbfeff"] } } }
+    "src/shared/constants/benefits.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/shared/constants/benefits.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/faqs.ts" [label=<faqs.ts> tooltip="faqs.ts" URL="src/shared/constants/faqs.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/features.ts" [label=<features.ts> tooltip="features.ts" URL="src/shared/constants/features.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/shared/constants/index.ts" fillcolor="#ddfeff"] } } }
+    "src/shared/constants/index.ts" -> "src/shared/constants/animation.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/benefits.tsx" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/faqs.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/features.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/reviews.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/schedule.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/sections.tsx" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/servicelist.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/services.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/slides.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/stats.tsx" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/typography.ts" [arrowhead="inv"]
+    "src/shared/constants/index.ts" -> "src/shared/constants/weekdays.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/reviews.ts" [label=<reviews.ts> tooltip="reviews.ts" URL="src/shared/constants/reviews.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/schedule.ts" [label=<schedule.ts> tooltip="schedule.ts" URL="src/shared/constants/schedule.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/sections.tsx" [label=<sections.tsx> tooltip="sections.tsx" URL="src/shared/constants/sections.tsx" fillcolor="#bbfeff"] } } }
+    "src/shared/constants/sections.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/shared/constants/sections.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/servicelist.ts" [label=<servicelist.ts> tooltip="servicelist.ts" URL="src/shared/constants/servicelist.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/services.ts" [label=<services.ts> tooltip="services.ts" URL="src/shared/constants/services.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/slides.ts" [label=<slides.ts> tooltip="slides.ts" URL="src/shared/constants/slides.ts" fillcolor="#ddfeff"] } } }
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-1-2.png"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-eight.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-five.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-four.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-nine.png"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-one.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-seven.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-six.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-three.jpg"
+    "src/shared/constants/slides.ts" -> "src/shared/assets/images/SliderSlides/slide-two.jpg"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/stats.tsx" [label=<stats.tsx> tooltip="stats.tsx" URL="src/shared/constants/stats.tsx" fillcolor="#bbfeff"] } } }
+    "src/shared/constants/stats.tsx" -> "node_modules/@mui/icons-material" [penwidth="1.0"]
+    "src/shared/constants/stats.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/typography.ts" [label=<typography.ts> tooltip="typography.ts" URL="src/shared/constants/typography.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/constants" {label="constants" "src/shared/constants/weekdays.ts" [label=<weekdays.ts> tooltip="weekdays.ts" URL="src/shared/constants/weekdays.ts" fillcolor="#ddfeff"] } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/hooks" {label="hooks" "src/shared/hooks/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/shared/hooks/index.ts" fillcolor="#ddfeff"] } } }
+    "src/shared/hooks/index.ts" -> "src/shared/hooks/useGetYears/useGetYears.ts" [arrowhead="inv"]
+    "src/shared/hooks/index.ts" -> "src/shared/hooks/useHeader/useHeader.ts" [arrowhead="inv"]
+    "src/shared/hooks/index.ts" -> "src/shared/hooks/useLoader/useLoader.tsx" [arrowhead="inv"]
+    "src/shared/hooks/index.ts" -> "src/shared/hooks/useScheduleActions/useScheduleActions.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/hooks" {label="hooks" subgraph "cluster_src/shared/hooks/useGetYears" {label="useGetYears" "src/shared/hooks/useGetYears/useGetYears.ts" [label=<useGetYears.ts> tooltip="useGetYears.ts" URL="src/shared/hooks/useGetYears/useGetYears.ts" fillcolor="#ddfeff"] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/hooks" {label="hooks" subgraph "cluster_src/shared/hooks/useHeader" {label="useHeader" "src/shared/hooks/useHeader/useHeader.ts" [label=<useHeader.ts> tooltip="useHeader.ts" URL="src/shared/hooks/useHeader/useHeader.ts" fillcolor="#ddfeff"] } } } }
+    "src/shared/hooks/useHeader/useHeader.ts" -> "node_modules/react" [penwidth="1.0"]
+    "src/shared/hooks/useHeader/useHeader.ts" -> "node_modules/react-router-dom" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/hooks" {label="hooks" subgraph "cluster_src/shared/hooks/useLoader" {label="useLoader" "src/shared/hooks/useLoader/useLoader.tsx" [label=<useLoader.tsx> tooltip="useLoader.tsx" URL="src/shared/hooks/useLoader/useLoader.tsx" fillcolor="#bbfeff"] } } } }
+    "src/shared/hooks/useLoader/useLoader.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/hooks" {label="hooks" subgraph "cluster_src/shared/hooks/useScheduleActions" {label="useScheduleActions" "src/shared/hooks/useScheduleActions/useScheduleActions.ts" [label=<useScheduleActions.ts> tooltip="useScheduleActions.ts" URL="src/shared/hooks/useScheduleActions/useScheduleActions.ts" fillcolor="#ddfeff"] } } } }
+    "src/shared/hooks/useScheduleActions/useScheduleActions.ts" -> "node_modules/date-fns" [penwidth="1.0"]
+    "src/shared/hooks/useScheduleActions/useScheduleActions.ts" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/types" {label="types" subgraph "cluster_src/shared/types/email" {label="email" "src/shared/types/email/FormData.ts" [label=<FormData.ts> tooltip="FormData.ts" URL="src/shared/types/email/FormData.ts" fillcolor="#ddfeff"] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/types" {label="types" subgraph "cluster_src/shared/types/global" {label="global" "src/shared/types/global/images.d.ts" [label=<images.d.ts> tooltip="images.d.ts" URL="src/shared/types/global/images.d.ts" fillcolor="#ccffcc"] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/types" {label="types" subgraph "cluster_src/shared/types/global" {label="global" "src/shared/types/global/mui.d.ts" [label=<mui.d.ts> tooltip="mui.d.ts" URL="src/shared/types/global/mui.d.ts" fillcolor="#ddfeff"] } } } }
+    "src/shared/types/global/mui.d.ts" -> "node_modules/@mui/material" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/types" {label="types" "src/shared/types/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/shared/types/index.ts" fillcolor="#ddfeff"] } } }
+    "src/shared/types/index.ts" -> "src/shared/types/email/FormData.ts" [arrowhead="inv"]
+    "src/shared/types/index.ts" -> "src/shared/types/responsive/WithIsMobile.ts" [arrowhead="inv"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/types" {label="types" subgraph "cluster_src/shared/types/responsive" {label="responsive" "src/shared/types/responsive/WithIsMobile.ts" [label=<WithIsMobile.ts> tooltip="WithIsMobile.ts" URL="src/shared/types/responsive/WithIsMobile.ts" fillcolor="#ddfeff"] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/types" {label="types" subgraph "cluster_src/shared/types/snackbar" {label="snackbar" "src/shared/types/snackbar/SnackbarStatus.ts" [label=<SnackbarStatus.ts> tooltip="no-orphans" URL="src/shared/types/snackbar/SnackbarStatus.ts" fillcolor="#ccffcc" fontcolor="orange" color="orange"] } } } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/shared" {label="shared" subgraph "cluster_src/shared/utils" {label="utils" "src/shared/utils/getRuleForDate.ts" [label=<getRuleForDate.ts> tooltip="getRuleForDate.ts" URL="src/shared/utils/getRuleForDate.ts" fillcolor="#ddfeff"] } } }
+    "src/shared/utils/getRuleForDate.ts" -> "node_modules/date-fns" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/widgets" {label="widgets" subgraph "cluster_src/widgets/Footer" {label="Footer" "src/widgets/Footer/Footer.tsx" [label=<Footer.tsx> tooltip="Footer.tsx" URL="src/widgets/Footer/Footer.tsx" fillcolor="#bbfeff"] } } }
+    "src/widgets/Footer/Footer.tsx" -> "src/shared/assets/logo/logo.svg"
+    "src/widgets/Footer/Footer.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/widgets/Footer/Footer.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/widgets" {label="widgets" subgraph "cluster_src/widgets/Footer" {label="Footer" "src/widgets/Footer/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/widgets/Footer/index.ts" fillcolor="#ddfeff"] } } }
+    "src/widgets/Footer/index.ts" -> "src/widgets/Footer/Footer.tsx"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/widgets" {label="widgets" subgraph "cluster_src/widgets/Header" {label="Header" "src/widgets/Header/Header.tsx" [label=<Header.tsx> tooltip="Header.tsx" URL="src/widgets/Header/Header.tsx" fillcolor="#bbfeff"] } } }
+    "src/widgets/Header/Header.tsx" -> "src/features/landing/ui/components/MenuButton/index.ts"
+    "src/widgets/Header/Header.tsx" -> "src/shared/assets/background/header2.jpg"
+    "src/widgets/Header/Header.tsx" -> "src/shared/assets/logo/logo.svg"
+    "src/widgets/Header/Header.tsx" -> "src/shared/constants/index.ts"
+    "src/widgets/Header/Header.tsx" -> "src/shared/hooks/index.ts"
+    "src/widgets/Header/Header.tsx" -> "node_modules/@mui/material" [penwidth="1.0"]
+    "src/widgets/Header/Header.tsx" -> "node_modules/framer-motion" [penwidth="1.0"]
+    "src/widgets/Header/Header.tsx" -> "node_modules/react" [penwidth="1.0"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/widgets" {label="widgets" subgraph "cluster_src/widgets/Header" {label="Header" "src/widgets/Header/index.ts" [label=<index.ts> tooltip="index.ts" URL="src/widgets/Header/index.ts" fillcolor="#ddfeff"] } } }
+    "src/widgets/Header/index.ts" -> "src/widgets/Header/Header.tsx"
+}
