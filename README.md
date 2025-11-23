@@ -14,8 +14,6 @@
 
 ## 🖼 Демо / Скриншоты
 
-> *(замени ссылками на реальные скриншоты или GIF)*
-
 ![Главная страница](docs/screenshots/home.png)  
 ![Список услуг](docs/screenshots/services.png)  
 
