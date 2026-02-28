@@ -57,13 +57,13 @@ function Landing() {
       <AnimatedSection index={3}>
         <Stats />
       </AnimatedSection>
-      <AnimatedSection index={4}>
+      {/* <AnimatedSection index={4}>
         {isMobile ? <ScheduleMobile /> : <Schedule />}
-      </AnimatedSection>
-      <AnimatedSection index={5}>
+      </AnimatedSection> */}
+      <AnimatedSection index={4}>
         <Contacts />
       </AnimatedSection>
-      <AnimatedSection index={6}>
+      <AnimatedSection index={5}>
         <Faq />
       </AnimatedSection>
     </Box>
