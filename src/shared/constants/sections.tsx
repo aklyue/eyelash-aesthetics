@@ -9,7 +9,7 @@ export const sections = [
   { id: "aboutme", label: "Обо мне", icon: <HomeIcon /> },
   { id: "services", label: "Мои услуги", icon: <HomeIcon /> },
   { id: "works", label: "Мои работы", icon: <BarChartIcon /> },
-  { id: "schedule", label: "Расписание", icon: <ScheduleIcon /> },
+  // { id: "schedule", label: "Расписание", icon: <ScheduleIcon /> },
   { id: "contacts", label: "Записаться", icon: <ContactMailIcon /> },
   { id: "faq", label: "FAQ", icon: <HelpIcon /> },
 ];

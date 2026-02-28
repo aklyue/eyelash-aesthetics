@@ -27,6 +27,8 @@ function Schedule() {
   const theme = useTheme();
   const { data: rules } = useAppSelector((state) => state.schedule);
 
+  console.log("Rules from store:", rules)
+
   const {
     selectedServices,
     setSelectedServices,
