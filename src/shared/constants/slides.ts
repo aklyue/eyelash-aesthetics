@@ -3,11 +3,11 @@ import SlideTwo from "../assets/images/SliderSlides/slide-two.jpg";
 import SlideThree from "../assets/images/SliderSlides/slide-three.jpg";
 import SlideFour from "../assets/images/SliderSlides/slide-four.jpg";
 import SlideFive from "../assets/images/SliderSlides/slide-five.jpg";
-import SlideSix from "../assets/images/SliderSlides/slide-six.png";
-import SlideSeven from "../assets/images/SliderSlides/slide-seven.png";
+import SlideSix from "../assets/images/SliderSlides/slide-six.jpg";
+import SlideSeven from "../assets/images/SliderSlides/slide-seven.jpg";
 import SlideEight from "../assets/images/SliderSlides/slide-eight.jpg";
-import SlideNine from "../assets/images/SliderSlides/slide-nine.png";
-import SlideTen from "../assets/images/SliderSlides/slide-1-2.png";
+import SlideNine from "../assets/images/SliderSlides/slide-nine.jpg";
+import SlideTen from "../assets/images/SliderSlides/slide-1-2.jpg";
 
 export const slides = [
   {
