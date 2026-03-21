@@ -9,6 +9,7 @@ import {
 import { loadBookedDates } from "../../../../app/store/slices/bookedDatesSlice";
 import { setSnackbar } from "../../../../app/store/slices/snackbarSlice";
 import { setLoading } from "../../../../app/store/slices/loadingSlice";
+import { loadLockedDates } from "../../../../app/store/slices/lockedDatesSlice";
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const useAdmin = () => {
@@ -28,6 +29,7 @@ export const useAdmin = () => {
         dispatch(loginSuccess());
         localStorage.setItem("adminPassword", password);
         dispatch(loadBookedDates());
+        dispatch(loadLockedDates());
       } else {
         dispatch(loginError("Неверный пароль"));
         dispatch(
@@ -35,7 +37,7 @@ export const useAdmin = () => {
             message: "Неверный пароль",
             severity: "error",
             open: true,
-          })
+          }),
         );
       }
     } catch {
@@ -45,7 +47,7 @@ export const useAdmin = () => {
           message: "Ошибка подключения",
           severity: "error",
           open: true,
-        })
+        }),
       );
     } finally {
       dispatch(setLoading(false));
@@ -68,6 +70,7 @@ export const useAdmin = () => {
           if (res.ok && data.success) {
             dispatch(loginSuccess());
             dispatch(loadBookedDates());
+            dispatch(loadLockedDates());
           } else {
             localStorage.removeItem("adminPassword");
           }

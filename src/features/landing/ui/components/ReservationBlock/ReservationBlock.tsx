@@ -39,6 +39,7 @@ function ReservationBlock({
   const isSmMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { getAvailableTimeSlots } = useBookingActions();
   const bookedDates = useAppSelector((state) => state.bookedDates);
+  const lockedDates = useAppSelector((state) => state.lockedDates);
   const { data: schedule } = useAppSelector((state) => state.schedule);
   const selectedService = service;
 
@@ -68,13 +69,8 @@ function ReservationBlock({
               const selectedDay = format(date, "yyyy-MM-dd");
               const today = startOfDay(new Date());
               const minAllowedDate = startOfDay(addDays(today, 4));
-              const blockedDates = [
-                new Date(2025, 9, 18),
-                new Date(2025, 9, 19),
-              ];
-
-              const isBlocked = blockedDates.some(
-                (blocked) => startOfDay(date).getTime() === blocked.getTime()
+              const isLockedByAdmin = lockedDates.some(
+                (lock) => lock.date === selectedDay,
               );
               const isTooEarly = isBefore(date, minAllowedDate);
 
@@ -85,7 +81,7 @@ function ReservationBlock({
               const availableSlots = getAvailableTimeSlots(
                 bookedSlots,
                 selectedService,
-                date
+                date,
               );
 
               const isNoSlotAvailable = availableSlots.length === 0;
@@ -97,7 +93,10 @@ function ReservationBlock({
                   !rule.allowed.includes(selectedService));
 
               return (
-                isTooEarly || isNoSlotAvailable || isBlocked || isNotAllowed
+                isTooEarly ||
+                isNoSlotAvailable ||
+                isLockedByAdmin ||
+                isNotAllowed
               );
             }}
             slotProps={{
@@ -181,7 +180,7 @@ function ReservationBlock({
             availableSlots = getAvailableTimeSlots(
               takenSlots,
               selectedService,
-              new Date(selectedDate)
+              new Date(selectedDate),
             );
           }
 

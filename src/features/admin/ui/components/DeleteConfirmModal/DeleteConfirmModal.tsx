@@ -33,7 +33,7 @@ export const DeleteConfirmModal = ({
       <DialogTitle>Удалить запись</DialogTitle>
 
       <DialogContent sx={{ position: "relative", minHeight: 80 }}>
-        <Typography>Вы уверены, что хотите удалить эту бронь?</Typography>
+        <Typography>Вы уверены, что хотите удалить эту запись?</Typography>
 
         {isLoading && (
           <Box

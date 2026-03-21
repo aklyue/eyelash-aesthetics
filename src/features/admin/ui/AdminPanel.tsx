@@ -28,6 +28,7 @@ import { ReactComponent as Logo } from "../../../shared/assets/logo/logo.svg";
 import { Logout } from "@mui/icons-material";
 import { logout } from "../../../app/store/slices/adminSlice";
 import { useNavigate } from "react-router-dom";
+import DateLocker from "../blocks/components/DateLocker";
 
 function AdminPanel() {
   const { isLoading } = useAppSelector((state) => state.loading);
@@ -158,10 +159,10 @@ function AdminPanel() {
                         snackbar.severity === "error"
                           ? "red"
                           : snackbar.severity === "warning"
-                          ? "orange"
-                          : snackbar.severity === "info"
-                          ? "blue"
-                          : "green",
+                            ? "orange"
+                            : snackbar.severity === "info"
+                              ? "blue"
+                              : "green",
                     }}
                     severity={snackbar.severity}
                   >
@@ -247,6 +248,9 @@ function AdminPanel() {
           sx={{ "& .MuiTabs-indicator": { backgroundColor: "#ba68a9ff" } }}
           value={tab}
           onChange={handleTabChange}
+          variant="scrollable"
+          scrollButtons="auto"
+          allowScrollButtonsMobile
         >
           <Tab
             sx={{
@@ -259,6 +263,12 @@ function AdminPanel() {
               "&.Mui-selected": { color: "#ba68a9ff !important" },
             }}
             label="Расписание"
+          />
+          <Tab
+            sx={{
+              "&.Mui-selected": { color: "#ba68a9ff !important" },
+            }}
+            label="Заблокированные даты"
           />
         </Tabs>
         <Swiper
@@ -274,6 +284,9 @@ function AdminPanel() {
           </SwiperSlide>
           <SwiperSlide style={{ overflow: "visible", position: "relative" }}>
             <ScheduleEditor />
+          </SwiperSlide>
+          <SwiperSlide style={{ overflow: "visible", position: "relative" }}>
+            <DateLocker />
           </SwiperSlide>
         </Swiper>
       </Box>
@@ -295,10 +308,10 @@ function AdminPanel() {
                 snackbar.severity === "error"
                   ? "red"
                   : snackbar.severity === "warning"
-                  ? "orange"
-                  : snackbar.severity === "info"
-                  ? "blue"
-                  : "green",
+                    ? "orange"
+                    : snackbar.severity === "info"
+                      ? "blue"
+                      : "green",
             }}
           >
             {snackbar.message}

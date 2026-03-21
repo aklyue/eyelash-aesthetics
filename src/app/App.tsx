@@ -4,6 +4,7 @@ import { CssBaseline, GlobalStyles, ThemeProvider } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { getTheme } from "./theme";
 import { fetchSchedule } from "./store/slices/scheduleSlice";
+import { loadLockedDates } from "./store/slices/lockedDatesSlice";
 
 function App() {
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchSchedule());
+    dispatch(loadLockedDates());
   }, [dispatch]);
 
   return (
