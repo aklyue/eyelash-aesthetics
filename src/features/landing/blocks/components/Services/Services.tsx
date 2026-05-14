@@ -13,15 +13,7 @@ import { motion } from "framer-motion";
 import AddIcon from "@mui/icons-material/Add";
 import { services } from "../../../../../shared/constants";
 import { useState } from "react";
-
-const sectionTitles: Record<keyof typeof services, string> = {
-  extension: "Наращивание ресниц",
-  removal: "Снятие ресниц",
-  extra: "Дополнительные эффекты",
-  lamination: "Ламинирование и окрашивание",
-  correction: "Коррекция ресниц",
-  discount: "Скидки",
-};
+import { sectionTitles } from "../../../../../shared/constants";
 
 export default function Services() {
   const theme = useTheme();

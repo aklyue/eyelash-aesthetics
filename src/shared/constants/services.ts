@@ -13,11 +13,20 @@ export const services = {
     { label: "Лучи", price: "+200₽" },
     { label: "Цветные ресницы/вставки", price: "+200₽" },
   ],
-  lamination: [
-    { label: "Ламинирование без окрашивания", price: "800₽" },
-    { label: "Ламинирование с окрашиванием", price: "900₽" },
-    { label: "Окрашивание ресниц", price: "200₽" },
-  ],
+  // lamination: [
+  //   { label: "Ламинирование без окрашивания", price: "800₽" },
+  //   { label: "Ламинирование с окрашиванием", price: "900₽" },
+  //   { label: "Окрашивание ресниц", price: "200₽" },
+  // ],
   correction: [{ label: "Коррекция ресниц", price: "400₽ - 500₽" }],
-  discount: [{ label: "Приведи подругу и получи скидку 10% на любую одну услугу", price: "" }],
+  // discount: [{ label: "Приведи подругу и получи скидку 10% на любую одну услугу", price: "" }],
+};
+
+export const sectionTitles: Record<keyof typeof services, string> = {
+  extension: "Наращивание ресниц",
+  removal: "Снятие ресниц",
+  extra: "Дополнительные эффекты",
+  // lamination: "Ламинирование и окрашивание",
+  correction: "Коррекция ресниц",
+  // discount: "Скидки",
 };
