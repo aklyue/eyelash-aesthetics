@@ -10,6 +10,7 @@ import {
   useTheme,
   useMediaQuery,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import ReservationBlock from "../../../ui/components/ReservationBlock";
@@ -98,7 +99,7 @@ export default function Contacts() {
     <Box
       sx={{
         px: isMobile ? 2 : 4,
-        py: 10,
+        py: isMobile ? 4 : 10,
         backgroundImage: `url(${ContactsBackground})`,
         backgroundSize: "cover",
         color: "#fff",
@@ -116,11 +117,24 @@ export default function Contacts() {
           md={5}
           sx={{ display: "flex", flexDirection: "column" }}
         >
-          <LinkSection isMobile={isMobile} />
-          <TinkoffRmPay
-            onFileSelected={(file) => setPaymentFile(file)}
-            isMobile={isMobile}
-          />
+          {isMobile ? (
+            <Typography
+              variant="h4"
+              color="rgba(20, 20, 20, 0.8)"
+              fontWeight={700}
+              gutterBottom
+            >
+              Запись
+            </Typography>
+          ) : (
+            <>
+              <LinkSection isMobile={isMobile} />
+              <TinkoffRmPay
+                onFileSelected={(file) => setPaymentFile(file)}
+                isMobile={isMobile}
+              />
+            </>
+          )}
         </Grid>
 
         <Grid item xs={12} md={7} sx={{ display: "flex" }}>
@@ -254,6 +268,15 @@ export default function Contacts() {
                   errors={errors}
                 />
 
+                {isMobile && (
+                  <Box mb={2}>
+                    <TinkoffRmPay
+                      onFileSelected={(file) => setPaymentFile(file)}
+                      isMobile={isMobile}
+                    />
+                  </Box>
+                )}
+
                 <Button
                   type="submit"
                   variant="contained"
@@ -275,6 +298,12 @@ export default function Contacts() {
                   {isSubmitting ? "Отправка..." : "Забронировать"}
                 </Button>
               </Stack>
+
+              {isMobile && (
+                <Box mt={4}>
+                  <LinkSection isMobile={isMobile} />
+                </Box>
+              )}
             </Box>
           </Paper>
         </Grid>
@@ -297,10 +326,10 @@ export default function Contacts() {
                 snackbar.severity === "error"
                   ? "red"
                   : snackbar.severity === "warning"
-                  ? "orange"
-                  : snackbar.severity === "info"
-                  ? "blue"
-                  : "green",
+                    ? "orange"
+                    : snackbar.severity === "info"
+                      ? "blue"
+                      : "green",
             }}
           >
             {snackbar.message}
