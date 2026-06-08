@@ -29,7 +29,7 @@ const TinkoffRmPay = ({
   const dispatch = useAppDispatch();
 
   return (
-    <Box sx={{ mt: 4, px: isMobile ? 0 : 4 }}>
+    <Box sx={{ mt: isMobile ? 0 : 4, px: isMobile ? 0 : 4 }}>
       <Typography variant="h6" color="#3b3b3b" gutterBottom>
         Предоплата 50% через Тинькофф
       </Typography>
