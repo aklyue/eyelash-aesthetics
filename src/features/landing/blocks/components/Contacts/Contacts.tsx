@@ -164,6 +164,17 @@ export default function Contacts() {
                   {...register("name", { required: "Введите имя" })}
                   error={!!errors.name}
                   helperText={errors.name?.message}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "gray",
+                    },
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "gray",
+                    },
+                    "& .MuiInputLabel-root.Mui-error": {
+                      color: "red",
+                    },
+                  }}
                 />
 
                 <TextField
@@ -181,6 +192,17 @@ export default function Contacts() {
                   })}
                   error={!!errors.telegram}
                   helperText={errors.telegram?.message}
+                  sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "gray",
+                    },
+                    "& .MuiInputLabel-root.Mui-focused": {
+                      color: "gray",
+                    },
+                    "& .MuiInputLabel-root.Mui-error": {
+                      color: "red",
+                    },
+                  }}
                 />
 
                 <Controller
@@ -201,6 +223,15 @@ export default function Contacts() {
                           bgcolor: "#ce92d71a",
                           "&:hover": {
                             bgcolor: isMobile ? "#ce92d71a" : "#ce92d738",
+                          },
+                          "& .MuiInputLabel-root": {
+                            color: "gray",
+                          },
+                          "& .MuiInputLabel-root.Mui-focused": {
+                            color: "gray",
+                          },
+                          "& .MuiInputLabel-root.Mui-error": {
+                            color: "red",
                           },
                         },
                       }}
@@ -256,6 +287,21 @@ export default function Contacts() {
                       onChange={field.onChange}
                       error={!!errors.details}
                       helperText={errors.details?.message}
+                      sx={{
+                        "& .MuiInputBase-input::placeholder": {
+                          color: "gray",
+                          opacity: 1,
+                        },
+                        "& .MuiInputLabel-root": {
+                          color: "gray",
+                        },
+                        "& .MuiInputLabel-root.Mui-focused": {
+                          color: "gray",
+                        },
+                        "& .MuiInputLabel-root.Mui-error": {
+                          color: "red",
+                        },
+                      }}
                     />
                   )}
                 />
