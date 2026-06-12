@@ -124,14 +124,18 @@ function ReservationBlock({
               day: {
                 sx: {
                   "&.MuiPickersDay-root": {
+                    color: "rgba(20, 20, 20, 0.8) !important",
                     fontWeight: "bold",
+                  },
+                  "&.Mui-disabled": {
+                    color: "#a4a4a4 !important",
                   },
                   "&:hover": {
                     bgcolor: isMobile ? "rgba(0,0,0,0)" : "#ce92d738",
                   },
                   "&.Mui-selected": {
                     bgcolor: "#ce92d7ff !important",
-                    color: "white",
+                    color: "white !important",
                   },
                   "&.MuiPickersDay-today": {
                     bgcolor: "rgba(0,0,0,0)",
@@ -195,6 +199,21 @@ function ReservationBlock({
               error={!!errors.time}
               helperText={errors.time?.message}
               disabled={!selectedDate}
+              sx={{
+                "& .MuiInputBase-input::placeholder": {
+                  color: "gray !important",
+                  opacity: 1,
+                },
+                "& .MuiInputLabel-root": {
+                  color: "gray",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "gray",
+                },
+                "& .MuiInputLabel-root.Mui-error": {
+                  color: "red",
+                },
+              }}
             >
               {availableSlots.map((slot) => (
                 <MenuItem
